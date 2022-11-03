@@ -17,6 +17,7 @@ class performance{
         int health;
         int lives;
     public:
+
         performance(){
             // constructor, we dont need inputs because initial values are fixed.
             health = 100;
@@ -26,23 +27,24 @@ class performance{
             //type_of_attack is a class with 2 types of attack
             //att is object of type of attack, will be given as argument
         bool alive = true ;
-        void health_deter(){
+        void health_deter(string attack){
+
             if (lives == 2){
                 if (health>0){
-                    if (attack = canon){
+                    if (attack == "canon"){
                         health -=20;
                     }
-                    else{
+                    else{//laser
                         health -=10;
                     }
                 }
                 else if(health=0){
                     lives -- ;
                     if (health>0){
-                        if (attack = canon){
+                        if (attack == "canon"){
                             health -=20;
                         }
-                        else{
+                        else{ //laser
                             health -=10;
                         }
                     }     
@@ -50,10 +52,10 @@ class performance{
             }
             else if(lives ==1){
                 if (health>0){
-                    if (attack = canon){
+                    if (attack == "canon"){
                         health -=20;
                     }
-                    else{
+                    else{ //laser attack
                         health -=10;
                     }
                 }
@@ -62,4 +64,5 @@ class performance{
                     alive = false;
                 }
             }
+}
 };
