@@ -1,0 +1,2 @@
+ask miss in main, time ki polymorphism mein, how do i differentiate kay kab current_time t1 ki class ka object hai 
+or kab t2 ki class ka object hai;

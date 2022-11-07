@@ -22,4 +22,4 @@ class spaceship{
         //     //what type of attck
         //     //what happen when attacked?
         // }
-};
+};      // work for moving left and right?
