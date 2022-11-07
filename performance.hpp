@@ -17,7 +17,7 @@ class performance{
         int health;
         int lives;
     public:
-
+        int getlife(){return lives;}
         performance(){
             // constructor, we dont need inputs because initial values are fixed.
             health = 100;
