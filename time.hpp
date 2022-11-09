@@ -20,9 +20,9 @@ class Time{
         int minutes, seconds; // attributes
 
 };
-class t1:public Time{
-    Time time_level_1;
-};
-class t2:public Time{
-    Time time_level_1;
-};
+// class t1:public Time{
+//     Time time_level_1;
+// };
+// class t2:public Time{
+//     Time time_level_1;
+// };

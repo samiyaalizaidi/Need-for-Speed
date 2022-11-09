@@ -27,5 +27,6 @@
     "**/.*/**",
     "**/.vscode",
     "**/.vscode/**"
-  ]
+  ],
+  "svn.ignoreMissingSvnWarning": true
 }
