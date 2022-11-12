@@ -67,8 +67,8 @@ bool Game::loadMedia()
 	//Loading success flag
 	bool success = true;
 	
-	Drawing::assets = loadTexture("space-bg.jpg");
-    gTexture = loadTexture("space-bg.jpg");
+	Drawing::assets = loadTexture("assets/space-bg.jpg");
+    gTexture = loadTexture("assets/space-bg.jpg");
 	if(Drawing::assets==NULL || gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
