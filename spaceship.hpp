@@ -1,10 +1,13 @@
 #include "position.hpp"
 #include "performance.hpp"
+#include <SDL.h>
+#pragma once
 
 class spaceship{
     position coord;
     performance health;
     //image 
+    SDL_Rect srcRect, moverRect; // for moving the ship
     public:
         spaceship(){
             coord.x = 0;
