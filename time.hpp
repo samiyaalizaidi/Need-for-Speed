@@ -1,4 +1,3 @@
-
 /* 
 this class is for the three-minute timer.
 it only has two attributes:
