@@ -3,7 +3,7 @@ This file contains all the function definitions for our SDL Class.
 */
 
 #include "game.hpp"
-#include "drawing.hpp"
+
 
 SDL_Renderer* Drawing::gRenderer = NULL;
 SDL_Texture* Drawing::assets = NULL;
@@ -28,7 +28,7 @@ bool Game::init()
 		}
 
 		//Create window
-		gWindow = SDL_CreateWindow( "HU Mania", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+		gWindow = SDL_CreateWindow( "NEED FOR SPEED", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 		if( gWindow == NULL )
 		{
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
@@ -67,12 +67,12 @@ bool Game::loadMedia()
 	//Loading success flag
 	bool success = true;
 	
-	Drawing::assets = loadTexture("assets/space-bg.jpg");
+	Drawing::assets = loadTexture("assets/Game assets/Raptor.png");
     gTexture = loadTexture("assets/space-bg.jpg");
 	if(Drawing::assets==NULL || gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
-        success =false;
+        success = false;
     }
 	return success;
 }
@@ -124,7 +124,7 @@ void Game::run( )
 	bool quit = false;
 	SDL_Event e;
 
-	// HUMania humania; we will have our spaceship here
+	Display ship; // we will have our spaceship here
 
 	while( !quit )
 	{
@@ -149,7 +149,7 @@ void Game::run( )
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL);//Draws background to renderer
 		//***********************draw the objects here********************
 
-		// humania.drawObjects();
+		ship.drawObject();
 
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer

@@ -6,7 +6,9 @@
 #include <string>
 #include <stdlib.h>
 #include <time.h>
-
+#include "drawing.hpp"
+#include "display.hpp"
+#pragma once
 class Game{
     //Screen dimension constants
     const int SCREEN_WIDTH = 853;
