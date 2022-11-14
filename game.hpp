@@ -23,9 +23,6 @@ class Game{
     
 
 public:
-
-
-    spaceship ship;
     bool init();
     bool loadMedia();
     void close();

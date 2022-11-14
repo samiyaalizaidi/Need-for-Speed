@@ -124,7 +124,7 @@ void Game::run( )
 	bool quit = false;
 	SDL_Event e;
 
-	 ship.draw(); // we will have our spaceship here
+	spaceship ship; // we will have our spaceship here
 	while( !quit )
 	{
 		//Handle events on queue
@@ -149,6 +149,9 @@ void Game::run( )
 		//***********************draw the objects here********************
 
 		ship.draw();
+		for(int i = 0; i < 3; i++){
+			ship.mover();
+		}
 
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
