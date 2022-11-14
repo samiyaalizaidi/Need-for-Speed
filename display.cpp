@@ -1,5 +1,5 @@
-#include "display.hpp"
+// #include "display.hpp"
 
-void Display::drawObject(){
-    ship.draw();
-}
+// void Display::drawObject(){
+//     ship.draw();
+// }

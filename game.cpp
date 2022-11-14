@@ -67,8 +67,8 @@ bool Game::loadMedia()
 	//Loading success flag
 	bool success = true;
 	
-	Drawing::assets = loadTexture("assets/Game assets/Raptor.png");
-    gTexture = loadTexture("assets/space-bg.jpg");
+	Drawing::assets = loadTexture("assets/Raptor.png");
+    gTexture = loadTexture("assets/Background.png");
 	if(Drawing::assets==NULL || gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
@@ -124,8 +124,7 @@ void Game::run( )
 	bool quit = false;
 	SDL_Event e;
 
-	Display ship; // we will have our spaceship here
-
+	 ship.draw(); // we will have our spaceship here
 	while( !quit )
 	{
 		//Handle events on queue
@@ -149,7 +148,7 @@ void Game::run( )
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL);//Draws background to renderer
 		//***********************draw the objects here********************
 
-		ship.drawObject();
+		ship.draw();
 
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer

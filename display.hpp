@@ -1,7 +1,7 @@
-#include "spaceship.hpp"
+// #include "spaceship.hpp"
 
-class Display{
-    spaceship ship;
-    public:
-        void drawObject();
-};
+// class Display{
+//     spaceship ship;
+//     public:
+//         void drawObject();
+// };
