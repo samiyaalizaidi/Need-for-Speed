@@ -15,7 +15,7 @@ class spaceship{
         // function members
         spaceship(); // constructor
         void draw(); // SDL rendering
-        void mover(); // to move the spaceship
+        void mover(); // to move the spaceship horizontally for now
         void moveup();
         void move_down();
 

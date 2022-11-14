@@ -21,7 +21,7 @@ void spaceship::draw(){
     SDL_RenderCopy(Drawing::gRenderer, Drawing::assets, &srcRect, &moverRect);
 }
 
-void spaceship::mover(){
+void spaceship::mover(){ 
     // srcRect = {100, 100, 53, 32};
-    moverRect.x = 150;
+    moverRect.x += 5;
 }
