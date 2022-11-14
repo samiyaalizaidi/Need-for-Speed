@@ -10,14 +10,15 @@ class spaceship{
     position coord;
     performance health;
     SDL_Rect srcRect, moverRect; // for moving the ship
-
+    
     public:
         // function members
         spaceship(); // constructor
         void draw(); // SDL rendering
-        void mover(); // to move the spaceship horizontally for now
+        void mover(int); // to move the spaceship horizontally for now
         void moveup();
         void move_down();
+        void changeship(SDL_Rect sr);
 
         // void shoot(){ what are we doing here
         //     //what type of attck
