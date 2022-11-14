@@ -5,7 +5,7 @@
 spaceship::spaceship(){
             coord.x = 0;
             coord.y = 50;
-            srcRect = {0, 0, 53, 32};
+            srcRect = {12, 18, 71, 70};
             moverRect = {150, 150,53, 32};
         }
 void spaceship::moveup(){

@@ -67,8 +67,8 @@ bool Game::loadMedia()
 	//Loading success flag
 	bool success = true;
 	
-	Drawing::assets = loadTexture("assets/Raptor.png");
-    gTexture = loadTexture("assets/Background.png");
+	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
+    gTexture = loadTexture("assets/Background.png"); // for the background image
 	if(Drawing::assets==NULL || gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
