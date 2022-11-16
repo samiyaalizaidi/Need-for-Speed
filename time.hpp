@@ -9,19 +9,33 @@ Class functions:
 */
 
 class Time{
+
+    private:
+        static Time* sInstance;
+        unsigned int mStartTicks;
+        unsigned int mElapsedTicks;
+        unsigned int mDelataTime;
+        unsigned int mTimeScale;
+
+        // old code:
     void adjust(){ // private function
         if(seconds > 59){
             minutes += seconds / 60;
             seconds %= 60;
         }
     }
+    Time();
+    ~Time();
     public:
+    // old code:
         int minutes, seconds; // attributes
+        // new code:
+        static Time* Instance();
+        static void Release();
+        void Reset();
+        // float 
+        void Update();
+
+
 
 };
-// class t1:public Time{
-//     Time time_level_1;
-// };
-// class t2:public Time{
-//     Time time_level_1;
-// };
