@@ -166,7 +166,13 @@ void Game::run( )
 		// for(int i = 0; i < 3; i++){
 		// 	ship.mover(mover);
 		// }
-		ship.mover(mover);
+		// ship.mover(mover);
+		if(direction == "up"){
+			ship.moveup();
+		}
+		if(direction=="down"){
+			ship.move_down();
+					}
 		// ship.move_down();
 		// if(direction == "down"){ship.move_down(); direction = "reset";}
 		// else if(direction == "up"){ship.moveup(); direction = "reset";}
