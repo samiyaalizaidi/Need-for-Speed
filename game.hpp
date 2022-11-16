@@ -9,6 +9,7 @@
 #include "drawing.hpp"
 #include "display.hpp"
 #include "spaceship.hpp"
+#include "startScreen.hpp"
 #pragma once
 class Game{
     //Screen dimension constants
