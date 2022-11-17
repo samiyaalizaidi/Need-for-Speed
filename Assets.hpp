@@ -1,0 +1,25 @@
+#include <map>
+#include <SDL.h>
+using namespace std;
+#include <SDL_ttf.h>
+class Assets{
+    static Assets* sInstance;
+    map<string, SDL_Texture*> textures;
+    map<string, SDL_Texture*> text;
+    map<string, TTF_Font*> fonts;
+    // map<string, Mix_Music*> textures;
+    // map<string, SDL_Texture*> textures;
+
+    Assets();
+    ~Assets();
+    TTF_Font* GetFont(string path, int size);
+    public:
+        static Assets* Instance();
+        static void Release();
+        SDL_Texture* GetTexture(string path);
+        SDL_Texture* GetText(string path);
+
+
+
+
+};
