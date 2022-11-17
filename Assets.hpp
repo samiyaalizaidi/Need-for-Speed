@@ -2,6 +2,7 @@
 #include <SDL.h>
 using namespace std;
 #include <SDL_ttf.h>
+#pragma once
 class Assets{
     static Assets* sInstance;
     map<string, SDL_Texture*> textures;

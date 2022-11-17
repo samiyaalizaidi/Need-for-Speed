@@ -3,7 +3,7 @@
 #include <SDL_ttf.h>
 #include <iostream>
 using namespace std;
-
+#pragma once
 // file with all the SDL stuff
 
 class Graphics{
