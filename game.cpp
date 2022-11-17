@@ -128,6 +128,7 @@ void Game::run( )
 	SDL_Event e;
 
 	spaceship ship; // we will have our spaceship here
+	startScreen text;
 	int mover = 0;
 	string direction = "reset"; // to call the mover functions
 	while( !quit )
@@ -141,38 +142,27 @@ void Game::run( )
 				quit = true;
 			}
 
-			if(e.type == SDL_KEYDOWN){ // NOTE: use keys here
-				// if(e.key.keysym.sym == SDLK_DOWN){
-					mover++;
-				// 	ship.move_down();
-				// }
-				// ship.move_down();
+			if(e.type == SDL_KEYDOWN){ 
 				direction = "down";
 			}
 
 			if(e.type == SDL_KEYUP){
-				mover--;
-				// ship.moveup();
-				// if(e.key.keysym.sym == SDLK_DOWN){
-					// mover--;
-				// 	ship.moveup();
-				// }
 				direction = "up";
 			}
 		}
 
 		SDL_RenderClear(Drawing::gRenderer); //removes everything from renderer
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL);//Draws background to renderer
+		SDL_RenderCopy(Drawing::gRenderer,NULL, NULL, &text.display_coord);
 		//***********************draw the objects here********************
 
 		ship.draw();
-		// for(int i = 0; i < 3; i++){
-		// 	ship.mover(mover);
-		// }
-		ship.mover(mover);
-		// ship.move_down();
-		// if(direction == "down"){ship.move_down(); direction = "reset";}
-		// else if(direction == "up"){ship.moveup(); direction = "reset";}
+		if(direction == "up"){
+			ship.moveup();
+		}
+		if(direction=="down"){
+			ship.move_down();
+		}
 
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
