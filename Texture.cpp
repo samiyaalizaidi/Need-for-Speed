@@ -5,7 +5,7 @@ Texture::Texture(std::string filename) {
 		// graphics = Graphics::Instance();
 
 		//Loads the texture from the AssetManager to avoid loading textures more than once
-		mTex = AssetManager::Instance()->GetTexture(filename);
+		mTex = Assets::Instance()->GetTexture(filename);
 
 		//Gets the Width and Height of the texture
 		SDL_QueryTexture(mTex, NULL, NULL, &width, &height);

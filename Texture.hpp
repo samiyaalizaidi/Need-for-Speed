@@ -1,5 +1,6 @@
-#include <SDL.h>
-#include <iostream>
+// #include <SDL.h>
+// #include <iostream>
+#include <Assets.hpp>
 class Texture{
     protected:
         SDL_Texture* mTex;
