@@ -1,5 +1,5 @@
 #include <SDL.h>
-// #include "game.hpp"
+#include "startScreen.hpp"
 #pragma once
 #include <SDL_ttf.h>
 
@@ -9,7 +9,7 @@ class ScreenManager{
         static ScreenManager* sInstance;
         // Input* nInput; // there is an input class
 
-        // StartScreen* start;` // class for our start class
+        StartScreen* start; // class for our start class
         SCREENS current;
 
     public:
