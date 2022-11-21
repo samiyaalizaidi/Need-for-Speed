@@ -3,7 +3,7 @@ This file contains all the function definitions for our SDL Class.
 */
 
 #include "game.hpp"
-
+#include "startScreen.hpp"
 
 SDL_Renderer* Drawing::gRenderer = NULL;
 SDL_Texture* Drawing::assets = NULL;

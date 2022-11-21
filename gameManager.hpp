@@ -1,6 +1,9 @@
 #pragma once
 
 #include <SDL.h>
+//#include "time.hpp"
+#include "startScreen.hpp"
+
 
 class gameManager{
     private:
@@ -17,12 +20,14 @@ class gameManager{
 
         // Timer* timer; // timer class
 
-        SDL_Event e;
+        SDL_Event event;
+        StartScreen* mStartScreen;
 
     public:
         static gameManager* Instance();
         static void Release(); // release memory
         void Run();
+
 
     private:
         gameManager();

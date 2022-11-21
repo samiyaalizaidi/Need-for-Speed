@@ -4,8 +4,9 @@ ScreenManager* ScreenManager::sInstance = NULL;
 
 ScreenManager* ScreenManager::Instance(){
     if(sInstance == NULL){
-        return new ScreenManager();
+        sInstance new ScreenManager();
     }
+    return sInstance;
 } 
 
 void ScreenManager::Release(){

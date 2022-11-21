@@ -33,10 +33,10 @@ void spaceship::draw(){
     SDL_RenderCopy(Drawing::gRenderer, Drawing::assets, &srcRect, &moverRect);
 }
 
-void spaceship::mover(int y){ 
-    // srcRect = {100, 100, 53, 32};
-    moverRect.y -= y;
-}
+// void spaceship::mover(int y){ 
+//     // srcRect = {100, 100, 53, 32};
+//     moverRect.y -= y;
+// }
 
 void spaceship::changeship(SDL_Rect sr = {12, 18, 71, 70}){ // to change the ship to show movement
     srcRect = sr;
