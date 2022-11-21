@@ -31,6 +31,20 @@ void Time::Reset() {
 		mDelataTime = 0.0f;
 	}
 
+// float Time::DeltaTime()
+// {
+// 	return mDelataTime;
+// }
+
+// void Time::TimeScale(float f)
+// {
+// 	mTimeScale = t;
+// }
+// float Time::TimeScale()
+// {
+// 	return mTimeScale;
+// }
+
 void Time::Update() {
 
 		// mElapsedTicks = SDL_GetTicks() - mStartTicks;

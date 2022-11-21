@@ -33,7 +33,9 @@ class Time{
         static Time* Instance();
         static void Release();
         void Reset();
-        // float 
+        // float DelataTime();
+        // void TimeScale(float f);
+        // float TimeScale();
         void Update();
 
 

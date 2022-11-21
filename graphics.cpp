@@ -67,8 +67,8 @@ bool Graphics::Init() {
         return false;
     }
 
-    //Setting the renderer's clear color to white
-    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    //Setting the renderer's clear color to blaCK
+    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
 
     //Initializing the SDL_image library and handling initialization errors
     int flags = IMG_INIT_PNG;
