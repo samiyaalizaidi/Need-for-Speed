@@ -1,9 +1,8 @@
 // MathHelper.h                                                                                                      //
 // Contains all the math functions that will be needed in the framework.                                                                         //
-
+#pragma once
 #include <math.h>
-
-namespace QuickSDL {
+#include <SDL.h>
 	
 	#define PI 3.14159265
 	#define DEG_TO_RAD PI / 180.0f
@@ -11,10 +10,8 @@ namespace QuickSDL {
 	// along with vector magnitude calculations, normalization, and operator overloading of += and -=   
 	
 	struct Vector2 {
-
 		float x;
 		float y;
-
 		Vector2(float _x = 0.0f, float _y = 0.0f)
 			{   
                 x =_x;
@@ -22,7 +19,6 @@ namespace QuickSDL {
             }
 		
 		//Calculates the square of the magnitude (preferably used instead of Magnitude if possible)   
-		
 		
 		float MagnitudeSqr() 
 		{
@@ -91,4 +87,3 @@ namespace QuickSDL {
 	const Vector2 VEC2_ONE = { 1.0f, 1.0f };
 	const Vector2 VEC2_UP = { 0.0f, 1.0f };
 	const Vector2 VEC2_RIGHT = { 1.0f, 0.0f };
-} 

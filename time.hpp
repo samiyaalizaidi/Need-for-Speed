@@ -8,6 +8,7 @@ Class functions:
         the adjust function will adjust the value of the seconds so that they don't exceed 59.
 */
 #include <SDL.h>
+#pragma once
 class Time{
 
     private:
