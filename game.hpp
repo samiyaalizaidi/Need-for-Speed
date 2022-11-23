@@ -24,8 +24,11 @@ class Game{
     
 
 public:
+    int state = 0;
     bool init();
+    bool loadMenu();
     bool loadMedia();
+    bool loadRules();
     void close();
     SDL_Texture* loadTexture( std::string path );
     void run();
