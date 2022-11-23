@@ -1,17 +1,20 @@
 #include "time.hpp"
 
-Time* Time::Instance() {
+Time* Time::Instance = NULL;
 
-		//Create a new instance of Timer if no instance was created before
-		if(sInstance == nullptr)
+Time* Time::Instance() 
+{		//Create a new instance of Timer if no instance was created before
+		if(sInstance == NULL)
 			return new Time();
-	}
+		return Instance;
+}
 
-void Time::Release() {
+void Time::Release() 
+{
 
-		delete sInstance;
-		sInstance = nullptr;
-	}
+	delete sInstance;
+	sInstance = NULL;
+}
 
 Time::Time() {
 
@@ -20,34 +23,35 @@ Time::Time() {
 		mTimeScale = 1.0f;
 	}
 
-Time::~Time() {
+Time::~Time() 
+{
 
-	}
+}
 
-void Time::Reset() {
+void Time::Reset() 
+{
+	mStartTicks = SDL_GetTicks();
+	mElapsedTicks = 0;
+	mDelataTime = 0.0f;
+}
 
-		// mStartTicks = SDL_GetTicks();
-		mElapsedTicks = 0;
-		mDelataTime = 0.0f;
-	}
+float Time::DeltaTime()
+{
+	return mDelataTime;
+}
 
-// float Time::DeltaTime()
-// {
-// 	return mDelataTime;
-// }
-
-// void Time::TimeScale(float f)
-// {
-// 	mTimeScale = t;
-// }
-// float Time::TimeScale()
-// {
-// 	return mTimeScale;
-// }
+void Time::TimeScale(float t)
+{
+	mTimeScale = t;
+}
+float Time::TimeScale()
+{
+	return mTimeScale;
+}
 
 void Time::Update() {
 
-		// mElapsedTicks = SDL_GetTicks() - mStartTicks;
+		mElapsedTicks = SDL_GetTicks() - mStartTicks;
 		//Converting milliseconds to seconds
 		mDelataTime = mElapsedTicks * 0.001f;
 	}

@@ -17,7 +17,8 @@ class Graphics{
         static Graphics* sInstance;
         static bool sInitialized;
         SDL_Window* window;
-        SDL_Renderer* renderer;
+        SDL_Renderer* renderer; 
+        SDL_Surface* mBackBuffer;
 
     public:
         static Graphics* Instance();
