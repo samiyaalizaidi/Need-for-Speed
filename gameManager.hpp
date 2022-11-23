@@ -1,8 +1,9 @@
 #pragma once
 
 #include <SDL.h>
-//#include "time.hpp"
+#include "time.hpp"
 #include "startScreen.hpp"
+#include "graphics.hpp"
 
 
 class gameManager{
@@ -13,12 +14,12 @@ class gameManager{
 
         // all the managers in one place
         // we have to make these
-        // Graphics* mGraphics;
+        Graphics* mGraphics;
 		// AssetManager* mAssetMgr;
 		// InputManager* mInputMgr;
 		// AudioManager* mAudioMgr;
 
-        // Timer* timer; // timer class
+        Time* mtimer; // timer class
 
         SDL_Event event;
         StartScreen* mStartScreen;

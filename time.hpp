@@ -7,7 +7,8 @@ Class functions:
     1. adjust()
         the adjust function will adjust the value of the seconds so that they don't exceed 59.
 */
-
+#include <SDL.h>
+#pragma once
 class Time{
 
     private:
@@ -33,11 +34,9 @@ class Time{
         static Time* Instance();
         static void Release();
         void Reset();
-        // float DelataTime();
-        // void TimeScale(float f);
-        // float TimeScale();
+        float DelataTime();
+        void TimeScale(float t);
+        float TimeScale();
         void Update();
-
-
 
 };

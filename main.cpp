@@ -5,9 +5,11 @@ This is our game's main file.
 // #include "performance.hpp"
 // #include "levels.hpp"
 #include "game.hpp"
+#include "gameManager.hpp"
 
 // FROM CS/CE 224/272 HOMEWORK 4
 int main(int argc, char *argv[]){
+    // gameManager* game = gameManager::Instance();
     Game game;
     srand(time(NULL));
     if( !game.init() ){
