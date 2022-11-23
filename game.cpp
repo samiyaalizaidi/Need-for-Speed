@@ -68,7 +68,10 @@ bool Game::loadMedia()
 	bool success = true;
 	
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
+	
+	//Drawing::assets = loadTexture("assets/raptor.png"); // for the ship to move
     gTexture = loadTexture("assets/Background.png"); // for the background image
+	
 	if(Drawing::assets==NULL || gTexture==NULL)
     {
         printf("Unable to run due to error: %s\n",SDL_GetError());
@@ -125,7 +128,7 @@ void Game::run( )
 	SDL_Event e;
 
 	spaceship ship; // we will have our spaceship here
-	startScreen text;
+	//startScreen text;
 	int mover = 0;
 	string direction = "reset"; // to call the mover functions
 	while( !quit )
@@ -156,10 +159,13 @@ void Game::run( )
 		ship.draw();
 		if(direction == "up"){
 			ship.moveup();
+			direction="reset";
 		}
-		if(direction=="down"){
+		else if(direction=="down"){
 			ship.move_down();
+			direction="reset";
 		}
+
 
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
