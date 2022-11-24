@@ -1,38 +1,54 @@
+//-------------------------------------------------------------------------------------------------------------------//
 // MathHelper.h                                                                                                      //
-// Contains all the math functions that will be needed in the framework.                                                                         //
-#pragma once
+// Contains all the math functions that will be needed in the framework.                                             //
+//                                                                                                                   //
+// By: Ather Omar                                                                                                    //
+//-------------------------------------------------------------------------------------------------------------------//
+#ifndef _MATHHELPER_H
+#define _MATHHELPER_H
+//--------------------------------------------------------------------------
 #include <math.h>
-#include <SDL.h>
-	
+//--------------------------------------------------------------------------
+// QuickSDL
+//--------------------------------------------------------------------------
+namespace QuickSDL {
+	//----------------------------------------------------------------------
 	#define PI 3.14159265
 	#define DEG_TO_RAD PI / 180.0f
+	//--------------------------------------------------------------------------------------------------
 	// Vector2 structs consist of x and y values discribing a 2D vector,                                
 	// along with vector magnitude calculations, normalization, and operator overloading of += and -=   
-	
+	//--------------------------------------------------------------------------------------------------
 	struct Vector2 {
+
 		float x;
 		float y;
+
 		Vector2(float _x = 0.0f, float _y = 0.0f)
 			{   
                 x =_x;
                 y =_y;
             }
-		
+		//--------------------------------------------------------------------------------------------
 		//Calculates the square of the magnitude (preferably used instead of Magnitude if possible)   
-		
-		float MagnitudeSqr() 
-		{
+		//--------------------------------------------------------------------------------------------
+		float MagnitudeSqr() {
+
 			return x*x + y*y;
 		}
+
+		//-------------------------------------------
 		//Calculates the magnitude of the vector     
-		float Magnitude() 
-		{
+		//-------------------------------------------
+		float Magnitude() {
+
 			return (float)sqrt(x*x + y*y);
 		}
 
+		//----------------------------------------------------------------------------------------
 		//Returns a directional Vector2 with the same direction as the Vector2 but of length 1    
 		// (Does not change the x and y values of the original vector)                                       
-		
+		//----------------------------------------------------------------------------------------
 		Vector2 Normalized() {
 
 			float mag = Magnitude();
@@ -87,3 +103,5 @@
 	const Vector2 VEC2_ONE = { 1.0f, 1.0f };
 	const Vector2 VEC2_UP = { 0.0f, 1.0f };
 	const Vector2 VEC2_RIGHT = { 1.0f, 0.0f };
+}
+#endif

@@ -3,34 +3,28 @@
 Graphics* Graphics::sInstance = NULL;
 bool Graphics::sInitialized = false;
 
-Graphics* Graphics::Instance() 
-{
+Graphics* Graphics::Instance() {
 		//Create a new instance if no instance was created before
 		if(sInstance == NULL)
 			sInstance = new Graphics();
 		return sInstance;
 }
 
-void Graphics::Release() 
-{
+void Graphics::Release() {
     delete sInstance;
     sInstance = NULL;
     sInitialized = false;
 }
 
-bool Graphics::Initialized() 
-{
-	return sInitialized;	
+bool Graphics::Initialized() {
+		return sInitialized;	
 }
 
-Graphics::Graphics() 
-{
-    mBackBuffer = NULL;
-	sInitialized = Init();
+Graphics::Graphics() {
+		sInitialized = Init();
 }
 
-Graphics::~Graphics() 
-{
+Graphics::~Graphics() {
 
     SDL_DestroyWindow(window);
     window = NULL;
@@ -44,8 +38,7 @@ Graphics::~Graphics()
     SDL_Quit();
 }
 
-bool Graphics::Init() 
-{
+bool Graphics::Init() {
 
     //Initialize SDL Video and Audio and handling initialization errors
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
@@ -63,8 +56,7 @@ bool Graphics::Init()
         printf("Window Creation Error: %s\n", SDL_GetError());
         return false;
     }
-    mBackBuffer = SDL_GetWindowSurface(window);
-    return true;
+
     //Creating the renderer
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
@@ -162,6 +154,5 @@ void Graphics::DrawTexture(SDL_Texture* tex, SDL_Rect* clip, SDL_Rect* rend, flo
 
 void Graphics::Render() {   
 
-SDL_UpdateWindowSurface(window);
 SDL_RenderPresent(renderer);
 }

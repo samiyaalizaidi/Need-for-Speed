@@ -1,7 +1,6 @@
 // #include "InputManager.hpp"
 // #include "AnimatedTexture.hpp"
 #include "Texture.hpp"
-#pragma once
 // using namespace QuickSDL;
 
 class StartScreen
