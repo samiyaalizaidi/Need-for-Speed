@@ -92,12 +92,13 @@ bool Game::loadMedia()
 	// Loading success flag
 	bool success = true;
 
-	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
+	Drawing::assets = loadTexture("assets/css_sprites.png"); // for the ship to move
+	// Drawing::assets_canon = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 
 	// Drawing::assets = loadTexture("assets/raptor.png"); // for the ship to move
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	//gTexture = loadTexture("clouds.png"); 
-	if (Drawing::assets == NULL || gTexture == NULL)
+	if (Drawing::assets == NULL|| gTexture == NULL)
 	{
 		printf("Unable to run due to error: %s\n", SDL_GetError());
 		success = false;
@@ -153,15 +154,15 @@ void Game::run()
 	bool quit = false;
 	SDL_Event e;
 
-	spaceship ship; // we will have our spaceship here
-	// startScreen text;
-	int mover = 0;
+	spaceship ship; // we will have our spaceship here	
+	AttackManager attack; // to display the canon for testing
 	string direction = "reset"; // to call the mover functions
+
 	while (!quit)
 	{		
 		// Handle events on queue
 		while (SDL_PollEvent(&e) != 0)
-		{//ship.adjust();
+		{
 			// User requests quit
 			if (e.type == SDL_QUIT)
 			{
@@ -195,12 +196,6 @@ void Game::run()
 			}
 			else if(e.type == SDL_KEYDOWN){
 				switch( e.key.keysym.sym ){
-                    //case SDLK_LEFT:
-                    //    direction -= 1;
-                     //   break;
-                    //case SDLK_RIGHT:
-                    //    alien_x += 1;
-                    //    break;
                     case SDLK_UP:
                         direction ="up" ;
                         break;
@@ -214,26 +209,36 @@ void Game::run()
 			else{
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
+			int x = rand() % 2;
+			// switch (x)
+			// {
+			// 	case 1:
+			// 		attack.createObject();
+			// 		break;
+				
+			// 	default:
+			// 		break;
+			// }
 			
-			SDL_RenderClear(Drawing::gRenderer);					  // removes everything from renderer
+			SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
 			SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
 			// SDL_RenderCopy(Drawing::gRenderer,NULL, NULL, &text.display_coord);
 			//***********************draw the objects here********************
-
+			attack.createObject();
+			attack.drawObjects();
 			ship.draw();
-			if (direction == "up" and  state==2)
+
+			if (direction == "up" and  state == 2)
 			{
 				ship.moveup();
 				direction = "reset";
-				// SDL_Delay(1000);
-				// ship.adjust();
 			}
-			else if (direction == "down" and state ==2)
+			else if (direction == "down" and state == 2)
 			{
 				ship.move_down();
 				direction = "reset";
 			}
-			// ship.adjust();
+			// attack.
 			//****************************************************************
 			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
@@ -242,4 +247,3 @@ void Game::run()
 		}
 	}
 }
- 

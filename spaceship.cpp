@@ -37,7 +37,7 @@ void spaceship::move_down(){
 }
 
 void spaceship::draw(){
-    SDL_RenderCopy(Drawing::gRenderer, Drawing::assets_ship, &srcRect, &moverRect);
+    SDL_RenderCopy(Drawing::gRenderer, Drawing::assets, &srcRect, &moverRect);
 }
 
 void spaceship::changeship(SDL_Rect sr = {12, 18, 71, 70}){ // to change the ship to show movement
