@@ -1,53 +1,53 @@
 #include "time.hpp"
 
-Time* Time::Instance() {
+// Time* Time::Instance() {
 
-		//Create a new instance of Timer if no instance was created before
-		if(sInstance == nullptr)
-			return new Time();
-	}
+// 		//Create a new instance of Timer if no instance was created before
+// 		if(sInstance == nullptr)
+// 			return new Time();
+// 	}
 
-void Time::Release() {
+// void Time::Release() {
 
-		delete sInstance;
-		sInstance = nullptr;
-	}
+// 		delete sInstance;
+// 		sInstance = nullptr;
+// 	}
 
-Time::Time() {
+// Time::Time() {
 
-		//Using Reset to initialize all the values beside mTimeScale
-		Reset();
-		mTimeScale = 1.0f;
-	}
+// 		//Using Reset to initialize all the values beside mTimeScale
+// 		Reset();
+// 		mTimeScale = 1.0f;
+// 	}
 
-Time::~Time() {
+// Time::~Time() {
 
-	}
+// 	}
 
-void Time::Reset() {
+// void Time::Reset() {
 
-		// mStartTicks = SDL_GetTicks();
-		mElapsedTicks = 0;
-		mDelataTime = 0.0f;
-	}
+// 		// mStartTicks = SDL_GetTicks();
+// 		mElapsedTicks = 0;
+// 		mDelataTime = 0.0f;
+// 	}
 
-// float Time::DeltaTime()
-// {
-// 	return mDelataTime;
-// }
+// // float Time::DeltaTime()
+// // {
+// // 	return mDelataTime;
+// // }
 
-// void Time::TimeScale(float f)
-// {
-// 	mTimeScale = t;
-// }
-// float Time::TimeScale()
-// {
-// 	return mTimeScale;
-// }
+// // void Time::TimeScale(float f)
+// // {
+// // 	mTimeScale = t;
+// // }
+// // float Time::TimeScale()
+// // {
+// // 	return mTimeScale;
+// // }
 
-void Time::Update() {
+// void Time::Update() {
 
-		// mElapsedTicks = SDL_GetTicks() - mStartTicks;
-		//Converting milliseconds to seconds
-		mDelataTime = mElapsedTicks * 0.001f;
-	}
+// 		// mElapsedTicks = SDL_GetTicks() - mStartTicks;
+// 		//Converting milliseconds to seconds
+// 		mDelataTime = mElapsedTicks * 0.001f;
+// 	}

@@ -1,18 +1,18 @@
-#include "Texture.hpp"
+// #include "Texture.hpp"
 
-Texture::Texture(std::string filename) {
+// Texture::Texture(std::string filename) {
 
-		// graphics = Graphics::Instance();
+// 		// graphics = Graphics::Instance();
 
-		//Loads the texture from the AssetManager to avoid loading textures more than once
-		mTex = Assets::Instance()->GetTexture(filename);
+// 		//Loads the texture from the AssetManager to avoid loading textures more than once
+// 		mTex = Assets::Instance()->GetTexture(filename);
 
-		//Gets the Width and Height of the texture
-		SDL_QueryTexture(mTex, NULL, NULL, &width, &height);
+// 		//Gets the Width and Height of the texture
+// 		SDL_QueryTexture(mTex, NULL, NULL, &width, &height);
 
-		//Clipped is false since the image is not loaded from a spritesheet
-		clipped = false;
+// 		//Clipped is false since the image is not loaded from a spritesheet
+// 		clipped = false;
 
-		mRect.w = width;
-		mRect.h = height;
-	}
+// 		mRect.w = width;
+// 		mRect.h = height;
+// 	}

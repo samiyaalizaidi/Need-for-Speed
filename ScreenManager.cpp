@@ -1,36 +1,36 @@
-#include"ScreenManager.hpp"
+// #include"ScreenManager.hpp"
 
-ScreenManager* ScreenManager::sInstance = NULL;
+// ScreenManager* ScreenManager::sInstance = NULL;
 
-ScreenManager* ScreenManager::Instance(){
-    if(sInstance == NULL){
-        sInstance new ScreenManager();
-    }
-    return sInstance;
-} 
+// ScreenManager* ScreenManager::Instance(){
+//     if(sInstance == NULL){
+//         sInstance new ScreenManager();
+//     }
+//     return sInstance;
+// } 
 
-void ScreenManager::Release(){
-    delete sInstance;
-    sInstance = nullptr;
-}
+// void ScreenManager::Release(){
+//     delete sInstance;
+//     sInstance = nullptr;
+// }
 
-ScreenManager::ScreenManager(){
-    // mStartscreen = new start()
-    // current = start;
-    // mInput = inputmanager::instance;
-}
+// ScreenManager::ScreenManager(){
+//     // mStartscreen = new start()
+//     // current = start;
+//     // mInput = inputmanager::instance;
+// }
 
-ScreenManager::~ScreenManager(){
-    // mInput = NULL;
-    // delete everythonh
+// ScreenManager::~ScreenManager(){
+//     // mInput = NULL;
+//     // delete everythonh
 
-}
+// }
 
-void ScreenManager::Update(){
-    // their own update comes here
-}
+// void ScreenManager::Update(){
+//     // their own update comes here
+// }
 
-void ScreenManager::Render(){
-    // their own render
-    // 10:45 of the video
-}
+// void ScreenManager::Render(){
+//     // their own render
+//     // 10:45 of the video
+// }
