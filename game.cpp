@@ -168,6 +168,7 @@ void Game::run()
 				quit = true;
 				cout << quit;
 			}
+	
 			else if (e.type == SDL_MOUSEBUTTONDOWN)
 			{
 				int xMouse, yMouse;
@@ -209,6 +210,9 @@ void Game::run()
                     default:
                         break;
                 }
+			}
+			else{
+				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
 			
 			SDL_RenderClear(Drawing::gRenderer);					  // removes everything from renderer
