@@ -60,6 +60,7 @@ bool Game::init()
 	}
 	return success;
 }
+
 bool Game::loadMenu()
 {
 	// Loading success flag
@@ -72,6 +73,7 @@ bool Game::loadMenu()
 	}
 	return success;
 }
+
 bool Game::loadRules()
 {
 	// Loading success flag
@@ -102,6 +104,7 @@ bool Game::loadMedia()
 	}
 	return success;
 }
+
 void Game::close()
 {
 	// Free loaded images
@@ -155,10 +158,10 @@ void Game::run()
 	int mover = 0;
 	string direction = "reset"; // to call the mover functions
 	while (!quit)
-	{
+	{		
 		// Handle events on queue
 		while (SDL_PollEvent(&e) != 0)
-		{
+		{//ship.adjust();
 			// User requests quit
 			if (e.type == SDL_QUIT)
 			{
@@ -218,17 +221,20 @@ void Game::run()
 			{
 				ship.moveup();
 				direction = "reset";
+				// SDL_Delay(1000);
+				// ship.adjust();
 			}
 			else if (direction == "down" and state ==2)
 			{
 				ship.move_down();
 				direction = "reset";
 			}
-
+			// ship.adjust();
 			//****************************************************************
 			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
-			SDL_Delay(100); // causes sdl engine to delay for specified miliseconds
+			SDL_Delay(50); // causes sdl engine to delay for specified miliseconds
+			// ship.adjust();
 		}
 	}
 }

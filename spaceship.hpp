@@ -19,6 +19,7 @@ class spaceship{
         void moveup();
         void move_down();
         void changeship(SDL_Rect sr);
+        void adjust();
 
         // void shoot(){ what are we doing here
         //     //what type of attck
