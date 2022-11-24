@@ -1,4 +1,4 @@
-#include "graphics.hpp"
+/* #include "graphics.hpp"
 
 Graphics* Graphics::sInstance = NULL;
 bool Graphics::sInitialized = false;
@@ -156,3 +156,4 @@ void Graphics::Render() {
 
 SDL_RenderPresent(renderer);
 }
+ */
