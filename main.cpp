@@ -15,7 +15,7 @@ int main(int argc, char *argv[]){
         return 0;
 	}
 		//Load media
-    if( !game.loadMedia() ){
+    if( !game.loadMenu() ){
         printf( "Failed to load media!\n" );
         return 0;
     }
