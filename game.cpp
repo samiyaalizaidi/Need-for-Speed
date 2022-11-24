@@ -176,13 +176,7 @@ void Game::run()
 				{
 					state = 2; // state2 represents the game has started (play is pressed)
 					loadMedia();
-					if (e.type == SDL_KEYDOWN){
-						direction = "down";
-					}
-
-					else if (e.type == SDL_KEYUP){
-						direction = "up";
-					}
+					
 				}
 				else if (state == 0 and xMouse >= 485 and xMouse <= 713 and yMouse >= 573 and yMouse <= 654)
 				{
@@ -194,8 +188,26 @@ void Game::run()
 					state = 0;
 					loadMenu();
 				}
-				
 			}
+			else if(e.type == SDL_KEYDOWN){
+				switch( e.key.keysym.sym ){
+                    //case SDLK_LEFT:
+                    //    direction -= 1;
+                     //   break;
+                    //case SDLK_RIGHT:
+                    //    alien_x += 1;
+                    //    break;
+                    case SDLK_UP:
+                        direction ="up" ;
+                        break;
+                    case SDLK_DOWN:
+                        direction = "down";
+                        break;
+                    default:
+                        break;
+                }
+			}
+			
 			SDL_RenderClear(Drawing::gRenderer);					  // removes everything from renderer
 			SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
 			// SDL_RenderCopy(Drawing::gRenderer,NULL, NULL, &text.display_coord);
