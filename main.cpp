@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
 		printf( "Failed to initialize!\n" );
         return 0;
 	}
-		//Load media
+		// start with menu
     if( !game.loadMenu() ){
         printf( "Failed to load media!\n" );
         return 0;
