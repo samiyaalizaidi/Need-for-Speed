@@ -211,7 +211,7 @@ void Game::run()
 			else{
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
-			// to create bombs
+			// to create bombs with 5% probability
 			int x = rand() % 20;
 			switch (x)
 			{
