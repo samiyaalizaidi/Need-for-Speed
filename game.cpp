@@ -96,7 +96,6 @@ bool Game::loadMedia()
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 
-	// Drawing::assets = loadTexture("assets/raptor.png"); // for the ship to move
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	//gTexture = loadTexture("clouds.png"); 
 	if (Drawing::assets == NULL|| gTexture == NULL)
@@ -200,7 +199,7 @@ void Game::run()
 			else if(e.type == SDL_KEYDOWN){
 				switch( e.key.keysym.sym ){
                     case SDLK_UP:
-                        direction ="up" ;
+                        direction = "up";
                         break;
                     case SDLK_DOWN:
                         direction = "down";
