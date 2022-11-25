@@ -1,7 +1,7 @@
 #include "attack.hpp"
 
 void Attack::draw(){
-    SDL_RenderCopy(Drawing::gRenderer, Drawing::assets, &srcRect, &moverRect);
+    SDL_RenderCopy(Drawing::gRenderer, Drawing::attack, &srcRect, &moverRect);
 }
 void Attack::move_NorthEast(){
     moverRect.x += 10;

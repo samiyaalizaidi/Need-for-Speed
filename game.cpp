@@ -7,6 +7,7 @@ This file contains all the function definitions for our SDL Class.
 
 SDL_Renderer *Drawing::gRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
+SDL_Texture *Drawing::attack = NULL;
 
 bool Game::init()
 {
@@ -92,8 +93,8 @@ bool Game::loadMedia()
 	// Loading success flag
 	bool success = true;
 
-	Drawing::assets = loadTexture("assets/css_sprites.png"); // for the ship to move
-	// Drawing::assets_canon = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
+	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
+	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 
 	// Drawing::assets = loadTexture("assets/raptor.png"); // for the ship to move
 	gTexture = loadTexture("assets/Background.png"); // for the background image
@@ -110,7 +111,9 @@ void Game::close()
 {
 	// Free loaded images
 	SDL_DestroyTexture(Drawing::assets);
+	SDL_DestroyTexture(Drawing::attack);
 	Drawing::assets = NULL;
+	Drawing::attack = NULL;
 	SDL_DestroyTexture(gTexture);
 
 	// Destroy window
@@ -209,24 +212,26 @@ void Game::run()
 			else{
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
-			int x = rand() % 2;
-			// switch (x)
-			// {
-			// 	case 1:
-			// 		attack.createObject();
-			// 		break;
+			// to create bombs
+			int x = rand() % 20;
+			switch (x)
+			{
+				case 1:
+					attack.createObject();
+					break;
 				
-			// 	default:
-			// 		break;
-			// }
+				default:
+					break;
+			}
 			
 			SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
 			SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
-			// SDL_RenderCopy(Drawing::gRenderer,NULL, NULL, &text.display_coord);
+			
 			//***********************draw the objects here********************
-			attack.createObject();
-			attack.drawObjects();
-			ship.draw();
+			
+			attack.drawObjects(); // display the bombs
+
+			ship.draw(); // display the ship
 
 			if (direction == "up" and  state == 2)
 			{
@@ -238,12 +243,12 @@ void Game::run()
 				ship.move_down();
 				direction = "reset";
 			}
-			// attack.
+
 			//****************************************************************
 			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
 			SDL_Delay(50); // causes sdl engine to delay for specified miliseconds
-			// ship.adjust();
+			
 		}
 	}
 }
