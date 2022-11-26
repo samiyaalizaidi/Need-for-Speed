@@ -5,7 +5,7 @@ using namespace std;
 void cloudmanager::creatobj(){
     check++;
     if (check >30){
-    cout << "created"<<endl;
+    cout << "cloud created"<<endl;
     clouds *c1 = new clouds(30,100);
     cld.push_back(c1); 
     check=0;
@@ -14,7 +14,7 @@ void cloudmanager::creatobj(){
 void cloudmanager::creatobj1(){
     check1++;
     if (check1 >25){
-    cout << "created"<<endl;
+    cout << "cloud created1"<<endl;
     clouds1 *c2 = new clouds1(0,300);
     cld1.push_back(c2); 
     check1=0;

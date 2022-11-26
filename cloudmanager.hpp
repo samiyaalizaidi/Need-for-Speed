@@ -4,7 +4,7 @@ using namespace std;
 #include<list>
 #include<SDL.h>
 #include "clouds.hpp"
-
+#include "clouds1.hpp"
 class cloudmanager{
     private:
         vector<clouds*>cld;
