@@ -213,55 +213,56 @@ void Game::run()
 			else{
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
-			// to create bombs with 5% probability
-			int x = rand() % 10;
-			switch (x)
-			{
-				case 1:
-					attack.createObject();
-					break;
-				
-				default:
-					break;
-			}
-			
-			SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
-			SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
-			
-			//***********************draw the objects here********************
-			
-			attack.drawObjects(); // display the bombs
-
-			ship.draw(); // display the ship
-
-			if(attack.DetectCollision(ship.getRect())){
-				checkAttack = true;
-				ship.showAttack();
-				cout << "collision detected" << endl;
-			}
-
-			if (direction == "up" and  state == 2)
-			{
-				ship.moveup();
-				direction = "reset";
-			}
-			else if (direction == "down" and state == 2)
-			{
-				ship.move_down();
-				direction = "reset";
-			}
-
-			//****************************************************************
-			if(state==2){
-				c2.creatobj();
-				c3.creatobj1();
-				c2.drawobj();
-				c3.drawobj1();
-			}
-			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
-
-			SDL_Delay(50); // causes sdl engine to delay for specified miliseconds
-			
 		}
+			// to create bombs with 5% probability
+		int x = rand() % 10;
+		switch (x)
+		{
+			case 1:
+				attack.createObject();
+				break;
+			
+			default:
+				break;
+		}
+		
+		SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
+		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
+		
+		//***********************draw the objects here********************
+		
+		attack.drawObjects(); // display the bombs
+
+		ship.draw(); // display the ship
+
+		if(attack.DetectCollision(ship.getRect())){
+			checkAttack = true;
+			ship.showAttack();
+			cout << "collision detected" << endl;
+		}
+
+		if (direction == "up" and  state == 2)
+		{
+			ship.moveup();
+			direction = "reset";
+		}
+		else if (direction == "down" and state == 2)
+		{
+			ship.move_down();
+			direction = "reset";
+		}
+
+		//****************************************************************
+		if(state==2){
+			c2.creatobj();
+			c3.creatobj1();
+			c2.drawobj();
+			c3.drawobj1();
+		}
+		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
+
+		SDL_Delay(50); // causes sdl engine to delay for specified miliseconds
+			
+		
 	}
 }
