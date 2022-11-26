@@ -36,6 +36,43 @@ void cloudmanager::drawobj1(){
         size++;
     }
 }
+//diamond
+void cloudmanager::creatobj2(){
+    check1++;
+    if (check1 >25){
+    int x = rand() % 3;
+    diamond *d1;
+    switch (x)
+    {
+        case 0:
+                cout << "diamond created"<<endl;
+                d1 = new diamond(1200,300);
+
+                break;
+        case 1:
+                cout << "diamond created"<<endl;
+                d1 = new diamond(700,450);
+                break;
+        case 2:
+                cout << "diamond created"<<endl;
+                d1 = new diamond(1000,590);
+                break;
+
+        default:
+            break;
+    }
+    dim.push_back(d1);
+    check1=0;
+    }
+}
+void cloudmanager::drawobj2(){
+    int size=0;
+    while(size<dim.size()){
+        dim[size]->draw();
+        dim[size]->move();
+        size++;
+    }
+}
 
 cloudmanager::~cloudmanager(){
     int size=0;
