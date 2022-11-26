@@ -221,9 +221,9 @@ void Game::run()
 			}
 			
 			else{
-				//ship.adjust(); // if the button is not pressed the ship will be straight
+				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
-		
+		}
 			// to create bombs with 5% probability
 
 			int x = rand() % 10;
@@ -245,11 +245,11 @@ void Game::run()
 			attack.drawObjects(); // display the bombs
 
 			ship.draw(); // display the ship
->>>>>>> Stashed changes
+
 
 		// to create bombs with 5% probability
-		int x = rand() % 20;
-		switch (x)
+		int y = rand() % 20;
+		switch (y)
 		{
 			case 1:
 				attack.createObject();
@@ -268,24 +268,11 @@ void Game::run()
 
 		ship.draw(); // display the ship
 
-<<<<<<< Updated upstream
 		if(attack.DetectCollision(ship.getRect())){
 			checkAttack = true;
 			ship.showAttack();
 			cout << "collision detected" << endl;
 		}
-=======
-			//****************************************************************
-			if(state==2){
-				c2.creatobj();
-				c3.creatobj1();
-				c2.drawobj();
-				c3.drawobj1();
-				d.creatobj2();
-				d.drawobj2();
-			}
-			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
->>>>>>> Stashed changes
 
 		if (direction == "up" and  state == 2)
 		{
@@ -303,6 +290,8 @@ void Game::run()
 			c3.creatobj1();
 			c2.drawobj();
 			c3.drawobj1();
+			d.creatobj2();
+			d.drawobj2();
 		}
 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
