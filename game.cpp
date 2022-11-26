@@ -8,6 +8,7 @@ SDL_Renderer *Drawing::gRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
 SDL_Texture *Drawing::attack = NULL;
 SDL_Texture *Drawing::clouds = NULL;
+SDL_Texture *Drawing::diamond = NULL;
 bool Game::init()
 {
 	// Initialization flag
@@ -94,7 +95,8 @@ bool Game::loadMedia()
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
-	Drawing::clouds = loadTexture("clouds.png"); 
+	Drawing::clouds = loadTexture("assets/clouds.png"); 
+	Drawing::diamond= loadTexture("assets/diamond.png"); 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
 	if (Drawing::assets == NULL|| gTexture == NULL)
@@ -111,8 +113,11 @@ void Game::close()
 	SDL_DestroyTexture(Drawing::assets);
 	SDL_DestroyTexture(Drawing::attack);
 	SDL_DestroyTexture(Drawing::clouds);
+	SDL_DestroyTexture(Drawing::diamond);
+	Drawing::diamond = NULL;
 	Drawing::assets = NULL;
 	Drawing::attack = NULL;
+	Drawing::clouds = NULL;
 	SDL_DestroyTexture(gTexture);
 
 	// Destroy window
@@ -162,6 +167,7 @@ void Game::run()
 	bool checkAttack = false;
 	cloudmanager c2;
 	cloudmanager c3;
+	cloudmanager d;
 	while (!quit)
 	{		
 		// Handle events on queue
@@ -215,9 +221,11 @@ void Game::run()
 			}
 			
 			else{
-				ship.adjust(); // if the button is not pressed the ship will be straight
+				//ship.adjust(); // if the button is not pressed the ship will be straight
 			}
+		
 			// to create bombs with 5% probability
+
 			int x = rand() % 10;
 			switch (x)
 			{
@@ -273,6 +281,8 @@ void Game::run()
 				c3.creatobj1();
 				c2.drawobj();
 				c3.drawobj1();
+				d.creatobj2();
+				d.drawobj2();
 			}
 			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 >>>>>>> Stashed changes
