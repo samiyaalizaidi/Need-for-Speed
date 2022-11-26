@@ -16,7 +16,7 @@ void spaceship::moveup(){
     coord.x++; // x coordinate will also be increased as the ship keeps on moving.
     if(!(moverRect.y <= 0)){
         moverRect.y -= 10;
-        if ((srcRect.x == 12 && srcRect.y == 18) || (srcRect.x == 412 && srcRect.y == 114))
+        if ((srcRect.x == 12 && srcRect.y == 18) || (srcRect.x == 12 && srcRect.y == 114))
         {
             srcRect = {108, 123, 71, 70};
 
@@ -30,7 +30,7 @@ void spaceship::move_down(){
         moverRect.y += 5;
         if ((srcRect.x == 12 && srcRect.y == 18) || (srcRect.x == 108 && srcRect.y == 123))
         {
-            srcRect = {412, 114, 71, 70};
+            srcRect = {12, 114, 69, 82};
 
         }
     }
