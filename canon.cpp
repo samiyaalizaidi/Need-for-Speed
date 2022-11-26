@@ -19,11 +19,11 @@ Canon::Canon(std::string direction){
             break;
         
         case 1:
-            moverRect = {40, 650, 24, 24};
+            moverRect = {110, 650, 24, 24};
             break;
 
         case 2:
-            moverRect = {70, 650, 24, 24};
+            moverRect = {210, 650, 24, 24};
             break;
 
         default:
@@ -38,11 +38,11 @@ Canon::Canon(std::string direction){
             break;
         
         case 1:
-            moverRect = {1070, 650, 24, 24};
+            moverRect = {1000, 650, 24, 24};
             break;
 
         case 2:
-            moverRect = {1040, 650, 24, 24};
+            moverRect = {900, 650, 24, 24};
             break;
 
         default:
@@ -57,11 +57,11 @@ Canon::Canon(std::string direction){
             break;
         
         case 1:
-            moverRect = {620, 650, 24, 24};
+            moverRect = {550, 650, 24, 24};
             break;
 
         case 2:
-            moverRect = {590, 650, 24, 24};
+            moverRect = {450, 650, 24, 24};
             break;
             
         default:
