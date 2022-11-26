@@ -212,7 +212,7 @@ void Game::run()
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
 			// to create bombs with 5% probability
-			int x = rand() % 20;
+			int x = rand() % 10;
 			switch (x)
 			{
 				case 1:
@@ -232,11 +232,11 @@ void Game::run()
 
 			ship.draw(); // display the ship
 
-			if(attack.DetectCollision(ship.getRect())){
-				checkAttack = true;
-				ship.showAttack();
-				cout << "collision detected" << endl;
-			}
+			// if(attack.DetectCollision(ship.getRect())){
+			// 	checkAttack = true;
+			// 	ship.showAttack();
+			// 	cout << "collision detected" << endl;
+			// }
 
 			if (direction == "up" and  state == 2)
 			{
