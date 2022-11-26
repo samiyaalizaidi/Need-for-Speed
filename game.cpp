@@ -8,6 +8,7 @@ SDL_Renderer *Drawing::gRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
 SDL_Texture *Drawing::attack = NULL;
 SDL_Texture *Drawing::clouds = NULL;
+
 bool Game::init()
 {
 	// Initialization flag
@@ -94,7 +95,7 @@ bool Game::loadMedia()
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
-	Drawing::clouds = loadTexture("assets/clouds.png"); 
+	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
@@ -112,8 +113,11 @@ void Game::close()
 	SDL_DestroyTexture(Drawing::assets);
 	SDL_DestroyTexture(Drawing::attack);
 	SDL_DestroyTexture(Drawing::clouds);
+
 	Drawing::assets = NULL;
 	Drawing::attack = NULL;
+	Drawing::clouds = NULL;
+	
 	SDL_DestroyTexture(gTexture);
 
 	// Destroy window
@@ -163,6 +167,7 @@ void Game::run()
 	bool checkAttack = false;
 	cloudmanager c2;
 	cloudmanager c3;
+	
 	while (!quit)
 	{		
 		// Handle events on queue
@@ -175,6 +180,7 @@ void Game::run()
 				cout << quit;
 			}
 	
+			// mouse button pressed
 			else if (e.type == SDL_MOUSEBUTTONDOWN)
 			{
 				int xMouse, yMouse;
@@ -199,6 +205,8 @@ void Game::run()
 					loadMenu();
 				}
 			}
+
+			// a key is pressed
 			else if(e.type == SDL_KEYDOWN){
 				switch( e.key.keysym.sym ){
                     case SDLK_UP:
@@ -211,12 +219,14 @@ void Game::run()
                         break;
                 }
 			}
+			
 			else{
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
 		}
-			// to create bombs with 5% probability
-		int x = rand() % 10;
+
+		// to create bombs with 5% probability
+		int x = rand() % 20;
 		switch (x)
 		{
 			case 1:
@@ -253,7 +263,7 @@ void Game::run()
 			direction = "reset";
 		}
 		//****************************************************************
-		if(state==2){
+		if(state == 2){
 			c2.creatobj();
 			c3.creatobj1();
 			c2.drawobj();
@@ -261,8 +271,6 @@ void Game::run()
 		}
 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
-		SDL_Delay(50); // causes sdl engine to delay for specified miliseconds
-			
-		
+		SDL_Delay(50); // causes sdl engine to delay for specified miliseconds		
 	}
 }
