@@ -4,8 +4,6 @@ using namespace std;
 #include<list>
 #include<SDL.h>
 #include "clouds.hpp"
-#include "clouds1.hpp"
-
 
 class cloudmanager{
     private:
@@ -18,4 +16,5 @@ class cloudmanager{
         void creatobj1();
         int check1=0;
         int check=0;
+        ~cloudmanager();
 };

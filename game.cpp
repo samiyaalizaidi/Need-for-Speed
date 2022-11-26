@@ -94,7 +94,7 @@ bool Game::loadMedia()
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
-	Drawing::clouds = loadTexture("assets/clouds.png"); 
+	Drawing::clouds = loadTexture("clouds.png"); 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	//gTexture = loadTexture("clouds.png"); 
 	if (Drawing::assets == NULL|| gTexture == NULL)
@@ -214,7 +214,7 @@ void Game::run()
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
 			// to create bombs with 5% probability
-			int x = rand() % 20;
+			int x = rand() % 10;
 			switch (x)
 			{
 				case 1:

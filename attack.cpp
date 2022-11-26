@@ -24,6 +24,10 @@ void Attack::move_SouthWest(){
     moverRect.y += 10;
 }
 
+void Attack::move_up(){
+    moverRect.y -= 10;
+}
+
 int Attack::getX(){
     return moverRect.x;
 }

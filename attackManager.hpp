@@ -4,15 +4,12 @@
 #include "canon.hpp"
 #include "laser.hpp"
 using namespace std;
+#include <map>
 
 class AttackManager{
-    private:
-        // gives address of the attack
-        Attack* getObject();
-
     public:
-        // list to store the attacks.
-        list<Attack*> lst; 
+        // map to store the bombs and the direction of their movement
+        map<Attack*, string> bombs;
 
         // draws and moves all objects
         void drawObjects(); 
@@ -23,6 +20,6 @@ class AttackManager{
         // returns true if the attack has collided with the ship
         bool DetectCollision(SDL_Rect);
 
-        // destructorto release dynamic memory
+        // destructor to release dynamic memory
         ~AttackManager();
 };
