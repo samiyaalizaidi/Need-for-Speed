@@ -7,7 +7,7 @@ This file contains all the function definitions for our SDL Class.
 SDL_Renderer *Drawing::gRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
 SDL_Texture *Drawing::attack = NULL;
-
+SDL_Texture *Drawing::clouds = NULL;
 bool Game::init()
 {
 	// Initialization flag
@@ -94,7 +94,7 @@ bool Game::loadMedia()
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
-
+	Drawing::clouds = loadTexture("clouds.png"); 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	//gTexture = loadTexture("clouds.png"); 
 	if (Drawing::assets == NULL|| gTexture == NULL)
@@ -159,7 +159,7 @@ void Game::run()
 	AttackManager attack; // to display the canon for testing
 	string direction = "reset"; // to call the mover functions
 	bool checkAttack = false;
-
+	cloudmanager c2;
 	while (!quit)
 	{		
 		// Handle events on queue
@@ -250,6 +250,10 @@ void Game::run()
 			}
 
 			//****************************************************************
+			if(state==2){
+				c2.creatobj();
+				c2.drawobj();
+			}
 			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
 			SDL_Delay(50); // causes sdl engine to delay for specified miliseconds

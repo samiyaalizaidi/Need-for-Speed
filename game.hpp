@@ -10,6 +10,7 @@
 #include "spaceship.hpp"
 #include "startScreen.hpp"
 #include "attackManager.hpp"
+#include "cloudmanager.hpp"
 #pragma once
 class Game{
     //Screen dimension constants
@@ -34,5 +35,6 @@ public:
     void close();
     SDL_Texture* loadTexture( std::string path );
     void run();
+    int x=0;
 };
 

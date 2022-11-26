@@ -7,5 +7,6 @@ class Drawing{
     //global reference to png image sheets
     static SDL_Texture* assets;
     static SDL_Texture* attack;
+    static SDL_Texture* clouds;
 };
 //assets

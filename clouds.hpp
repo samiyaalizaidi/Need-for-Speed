@@ -1,9 +1,11 @@
-#include<SDL.h>
-#include<list>
-#include <vector>
+#include <SDL.h>
+//#include  "unit.hpp"
 #include "drawing.hpp"
+#include<vector>
+#include<list>
 
-class clouds{
+class clouds {
+    //friend class RunningMan;
     SDL_Rect srcRect, moverRect;
     public:
     int count = 0 ;
@@ -12,20 +14,5 @@ class clouds{
     void move();
     clouds();
     clouds(int, int);
-    private:
-        // gives address of the attack
-        clouds* getObject();
-
-    public:
-        // list to store the attacks.
-        list<clouds*> cld; 
-
-        // draws and moves all objects
-        void drawObjects(); 
-
-        // obtains a dynamic memory
-        void createObject();
-
-        // destructorto release dynamic memory
-        ~clouds();
-};
+    void animate();
+}; 
