@@ -3,7 +3,7 @@
 void cloudmanager::creatobj(){
     check++;
     if (check >30){
-    cout << "created"<<endl;
+    // cout << "created"<<endl;
     clouds *c1 = new clouds(30,100);
     cld.push_back(c1); 
     check=0;
