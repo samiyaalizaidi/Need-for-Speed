@@ -9,6 +9,7 @@ SDL_Texture *Drawing::assets = NULL;
 SDL_Texture *Drawing::attack = NULL;
 SDL_Texture *Drawing::clouds = NULL;
 SDL_Texture *Drawing::diamond = NULL;
+
 bool Game::init()
 {
 	// Initialization flag
@@ -95,8 +96,9 @@ bool Game::loadMedia()
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
-	Drawing::clouds = loadTexture("assets/clouds.png"); 
-	Drawing::diamond= loadTexture("assets/diamond.png"); 
+	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
+	Drawing::diamond= loadTexture("assets/diamond.png"); // for the diamonds
+
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
 	if (Drawing::assets == NULL|| gTexture == NULL)
@@ -221,32 +223,13 @@ void Game::run()
 			}
 			
 			else{
-				//ship.adjust(); // if the button is not pressed the ship will be straight
+				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
-		
-			// to create bombs with 5% probability
-
-			int x = rand() % 10;
-			switch (x)
-			{
-				case 1:
-					attack.createObject();
-					break;
+		}
 				
-				default:
-					break;
-			}
-			
-			SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
-			SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
-			
-			//***********************draw the objects here********************
-			
-			attack.drawObjects(); // display the bombs
-
-			ship.draw(); // display the ship
->>>>>>> Stashed changes
-
+		SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
+		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
+		
 		// to create bombs with 5% probability
 		int x = rand() % 20;
 		switch (x)
@@ -259,51 +242,41 @@ void Game::run()
 				break;
 		}
 		
-		SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
-		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
-		
-		//***********************draw the objects here********************
-		
 		attack.drawObjects(); // display the bombs
 
 		ship.draw(); // display the ship
 
-<<<<<<< Updated upstream
+		// for collision detection
 		if(attack.DetectCollision(ship.getRect())){
 			checkAttack = true;
 			ship.showAttack();
 			cout << "collision detected" << endl;
 		}
-=======
-			//****************************************************************
-			if(state==2){
-				c2.creatobj();
-				c3.creatobj1();
-				c2.drawobj();
-				c3.drawobj1();
-				d.creatobj2();
-				d.drawobj2();
-			}
-			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
->>>>>>> Stashed changes
 
+		// to move up
 		if (direction == "up" and  state == 2)
 		{
 			ship.moveup();
 			direction = "reset";
 		}
+
+		// to move down
 		else if (direction == "down" and state == 2)
 		{
 			ship.move_down();
 			direction = "reset";
 		}
-		//****************************************************************
-		if(state == 2){
+
+		
+		if(state==2){
 			c2.creatobj();
 			c3.creatobj1();
 			c2.drawobj();
 			c3.drawobj1();
+			d.creatobj2();
+			d.drawobj2();
 		}
+		
 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
 		SDL_Delay(50); // causes sdl engine to delay for specified miliseconds		
