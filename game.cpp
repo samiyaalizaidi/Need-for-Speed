@@ -7,6 +7,7 @@ This file contains all the function definitions for our SDL Class.
 
 SDL_Renderer *Drawing::gRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
+SDL_Texture *Drawing::attack = NULL;
 
 bool Game::init()
 {
@@ -60,6 +61,7 @@ bool Game::init()
 	}
 	return success;
 }
+
 bool Game::loadMenu()
 {
 	// Loading success flag
@@ -72,6 +74,7 @@ bool Game::loadMenu()
 	}
 	return success;
 }
+
 bool Game::loadRules()
 {
 	// Loading success flag
@@ -91,22 +94,25 @@ bool Game::loadMedia()
 	bool success = true;
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
+	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 
-	// Drawing::assets = loadTexture("assets/raptor.png"); // for the ship to move
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	//gTexture = loadTexture("clouds.png"); 
-	if (Drawing::assets == NULL || gTexture == NULL)
+	if (Drawing::assets == NULL|| gTexture == NULL)
 	{
 		printf("Unable to run due to error: %s\n", SDL_GetError());
 		success = false;
 	}
 	return success;
 }
+
 void Game::close()
 {
 	// Free loaded images
 	SDL_DestroyTexture(Drawing::assets);
+	SDL_DestroyTexture(Drawing::attack);
 	Drawing::assets = NULL;
+	Drawing::attack = NULL;
 	SDL_DestroyTexture(gTexture);
 
 	// Destroy window
@@ -150,12 +156,12 @@ void Game::run()
 	bool quit = false;
 	SDL_Event e;
 
-	spaceship ship; // we will have our spaceship here
-	// startScreen text;
-	int mover = 0;
+	spaceship ship; // we will have our spaceship here	
+	AttackManager attack; // to display the canon for testing
 	string direction = "reset"; // to call the mover functions
+
 	while (!quit)
-	{
+	{		
 		// Handle events on queue
 		while (SDL_PollEvent(&e) != 0)
 		{
@@ -165,6 +171,7 @@ void Game::run()
 				quit = true;
 				cout << quit;
 			}
+	
 			else if (e.type == SDL_MOUSEBUTTONDOWN)
 			{
 				int xMouse, yMouse;
@@ -191,14 +198,8 @@ void Game::run()
 			}
 			else if(e.type == SDL_KEYDOWN){
 				switch( e.key.keysym.sym ){
-                    //case SDLK_LEFT:
-                    //    direction -= 1;
-                     //   break;
-                    //case SDLK_RIGHT:
-                    //    alien_x += 1;
-                    //    break;
                     case SDLK_UP:
-                        direction ="up" ;
+                        direction = "up";
                         break;
                     case SDLK_DOWN:
                         direction = "down";
@@ -207,19 +208,36 @@ void Game::run()
                         break;
                 }
 			}
+			else{
+				ship.adjust(); // if the button is not pressed the ship will be straight
+			}
+			// to create bombs with 5% probability
+			int x = rand() % 20;
+			switch (x)
+			{
+				case 1:
+					attack.createObject();
+					break;
+				
+				default:
+					break;
+			}
 			
-			SDL_RenderClear(Drawing::gRenderer);					  // removes everything from renderer
+			SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
 			SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
-			// SDL_RenderCopy(Drawing::gRenderer,NULL, NULL, &text.display_coord);
+			
 			//***********************draw the objects here********************
+			
+			attack.drawObjects(); // display the bombs
 
-			ship.draw();
-			if (direction == "up" and  state==2)
+			ship.draw(); // display the ship
+
+			if (direction == "up" and  state == 2)
 			{
 				ship.moveup();
 				direction = "reset";
 			}
-			else if (direction == "down" and state ==2)
+			else if (direction == "down" and state == 2)
 			{
 				ship.move_down();
 				direction = "reset";
@@ -228,8 +246,8 @@ void Game::run()
 			//****************************************************************
 			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
-			SDL_Delay(100); // causes sdl engine to delay for specified miliseconds
+			SDL_Delay(50); // causes sdl engine to delay for specified miliseconds
+			
 		}
 	}
 }
- 

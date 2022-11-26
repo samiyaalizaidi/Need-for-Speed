@@ -1,5 +1,4 @@
 // code from homework 4
-#include <SDL.h>
 #include <SDL_image.h>
 #include <stdio.h>
 #include <iostream>
@@ -10,6 +9,7 @@
 #include "display.hpp"
 #include "spaceship.hpp"
 #include "startScreen.hpp"
+#include "attackManager.hpp"
 #pragma once
 class Game{
     //Screen dimension constants
@@ -22,7 +22,9 @@ class Game{
     //Current displayed texture
     SDL_Texture* gTexture = NULL;
     
-
+    // list to mantain all the attacks.
+    list<Attack*> lst;
+    
 public:
     int state = 0;
     bool init();
