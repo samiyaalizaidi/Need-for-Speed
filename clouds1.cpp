@@ -1,23 +1,24 @@
-#include "clouds.hpp"
+#include "clouds1.hpp"
+
 #include <iostream>
 //#include "game.hpp"
 
-clouds::clouds(int x, int y){
+clouds1::clouds1(int x, int y){
     // src coorinates from assets.png file, they have been found using spritecow.com
-    srcRect = {593, 35, 148,120 };
+    srcRect = srcRect = {548,195,208,100};
      // setting pigeon x and y values
-    moverRect = {1200,150,100,100};
+    moverRect = {1100,300,100,100};
 }
 
-clouds::clouds(){
+clouds1::clouds1(){
     // src coorinates from assets.png file, they have been found using spritecow.com
-    moverRect =  {1200,150,100,100};
+    moverRect =  {1100,300,100,100};
      // setting pigeon x and y values
-    srcRect = {593, 35, 148,120 };
+    srcRect = {548,195,208,100};
 }
 
 
-void clouds::draw(){
+void clouds1::draw(){
     SDL_RenderCopy(Drawing::gRenderer, Drawing::clouds, &srcRect, &moverRect);  //makes the object
     /* tick++;
     if(tick>10){
@@ -37,10 +38,10 @@ void clouds::draw(){
     } */
 }
 
-void clouds::move(){
+void clouds1::move(){
     if (moverRect.x < 0){
      //   count ++;
-        moverRect.x = 980;
+        moverRect.x = 1200;
         moverRect.x -= 13;}
     else{moverRect.x -= 13;}
 } 

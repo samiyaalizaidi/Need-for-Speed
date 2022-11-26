@@ -1,9 +1,10 @@
 #include <SDL.h>
 //#include  "unit.hpp"
 #include "drawing.hpp"
-#pragma once
+#include<vector>
+#include<list>
 
-class clouds {
+class clouds1 {
     //friend class RunningMan;
     SDL_Rect srcRect, moverRect;
     public:
@@ -11,6 +12,6 @@ class clouds {
     int frame = 0 ;
     void draw();
     void move();
-    clouds();
-    clouds(int, int);
+    clouds1();
+    clouds1(int, int);
 }; 
