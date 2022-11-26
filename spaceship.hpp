@@ -8,7 +8,7 @@
 class spaceship{
     // attributes
     position coord;
-    performance health;
+    Performance health;
     SDL_Rect srcRect, moverRect; // for moving the ship
     
     public:

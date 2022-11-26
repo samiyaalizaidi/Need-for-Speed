@@ -7,7 +7,7 @@ void Canon::setAttack(){
 }
 
 Canon::Canon(std::string direction){
-    // for randomness
+    // for assigning positions randomly
     int x = rand() % 3;
     // assigning positions depending on the direction of movement
     srcRect = {0, 0, 24, 24};

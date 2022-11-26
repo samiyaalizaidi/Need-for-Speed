@@ -31,7 +31,6 @@ void spaceship::move_down(){
         if ((srcRect.x == 12 && srcRect.y == 18) || (srcRect.x == 108 && srcRect.y == 123))
         {
             srcRect = {12, 114, 69, 82};
-
         }
     }
 }
@@ -44,8 +43,15 @@ void spaceship::changeship(SDL_Rect sr = {12, 18, 71, 70}){ // to change the shi
     srcRect = sr;
 }
 
-void spaceship::showAttack(){
-    srcRect = {24, 319, 57, 62};
+void spaceship::showAttack(){    
+    if(health.getHealth() == 0){
+        srcRect = {418, 319, 63, 63};
+        cout << "health completely destroyed" << endl;
+    }
+    else{
+        srcRect = {24, 319, 57, 62};
+        health.CanonAttack();
+    }
 }
 
 int spaceship::getX(){
