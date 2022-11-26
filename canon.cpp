@@ -10,5 +10,5 @@ Canon::Canon(int x, int y){
     // moverRect.x = x;
     // moverRect.y = y;
     srcRect = {0, 0, 24, 24};
-    moverRect = {x, y, 24, 24};
+    moverRect = {10, 650, 24, 24};
 }

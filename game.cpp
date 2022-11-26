@@ -1,9 +1,8 @@
-/* /*
+/* 
 This file contains all the function definitions for our SDL Class.
 */
 
 #include "game.hpp"
-#include "startScreen.hpp"
 
 SDL_Renderer *Drawing::gRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
@@ -159,6 +158,7 @@ void Game::run()
 	spaceship ship; // we will have our spaceship here	
 	AttackManager attack; // to display the canon for testing
 	string direction = "reset"; // to call the mover functions
+	bool checkAttack = false;
 
 	while (!quit)
 	{		
@@ -231,6 +231,12 @@ void Game::run()
 			attack.drawObjects(); // display the bombs
 
 			ship.draw(); // display the ship
+
+			if(attack.DetectCollision(ship.getRect())){
+				checkAttack = true;
+				ship.showAttack();
+				cout << "collision detected" << endl;
+			}
 
 			if (direction == "up" and  state == 2)
 			{

@@ -4,9 +4,8 @@ void AttackManager::drawObjects(){
     // to display everything in the list
     for(Attack* attack: lst){        
         if(attack != NULL){
-            // cout << "in condition" << endl;
             attack->draw();
-            attack->move_SouthEast();
+            attack->move_NorthEast();
         }
     }
 }
@@ -27,4 +26,15 @@ AttackManager::~AttackManager(){
     }
     lst.clear();
     cout << "everything deleted" << endl;
+}
+
+bool AttackManager::DetectCollision(SDL_Rect coord){
+    for(Attack* attack : lst){
+        if(attack->getX() == coord.x){
+            if((attack->getY() >= coord.y) && (attack->getX() <= (coord.y + coord.h))){
+                return true;
+            }
+        }
+    }
+    return false;
 }

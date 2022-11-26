@@ -20,9 +20,8 @@ class spaceship{
         void move_down();
         void changeship(SDL_Rect sr);
         void adjust();
-
-        // void shoot(){ what are we doing here
-        //     //what type of attck
-        //     //what happen when attacked?
-        // }
-};      // work for moving left and right?
+        int getX(); // returns the x coordinate of the ship
+        int getY(); // return the y coordinate of the ship
+        void showAttack(); // displays the attack sprite.
+        SDL_Rect getRect();
+};      

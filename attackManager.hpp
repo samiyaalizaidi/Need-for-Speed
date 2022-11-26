@@ -20,6 +20,9 @@ class AttackManager{
         // obtains a dynamic memory
         void createObject();
 
+        // returns true if the attack has collided with the ship
+        bool DetectCollision(SDL_Rect);
+
         // destructorto release dynamic memory
         ~AttackManager();
 };

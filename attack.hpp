@@ -12,5 +12,7 @@ class Attack{
         void move_NorthWest();
         void move_SouthEast();
         void move_SouthWest();
+        int getX(); // returns the x coordinate of the attack
+        int getY(); // returns the y coordinate of the attack
         virtual void setAttack() = 0;        
 };

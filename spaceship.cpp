@@ -43,3 +43,19 @@ void spaceship::draw(){
 void spaceship::changeship(SDL_Rect sr = {12, 18, 71, 70}){ // to change the ship to show movement
     srcRect = sr;
 }
+
+void spaceship::showAttack(){
+    srcRect = {24, 319, 57, 62};
+}
+
+int spaceship::getX(){
+    return moverRect.x;
+}
+
+int spaceship::getY(){
+    return moverRect.y;
+}   
+
+SDL_Rect spaceship::getRect(){
+    return moverRect;
+}
