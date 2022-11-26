@@ -1,6 +1,5 @@
 #include "cloudmanager.hpp"
-#include <iostream>
-using namespace std;
+
 void cloudmanager::creatobj(){
     check++;
     if (check >30){
@@ -19,3 +18,12 @@ void cloudmanager::drawobj(){
     }
 }
 
+cloudmanager::~cloudmanager(){
+    int size=0;
+    while(size<cld.size()){
+        delete cld[size];
+        cld[size] = NULL;
+        size++;
+    }
+    cout << "clouds deleted" << endl;
+}

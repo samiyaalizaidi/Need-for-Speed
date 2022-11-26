@@ -94,7 +94,7 @@ bool Game::loadMedia()
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
-	Drawing::clouds = loadTexture("clouds.png"); 
+	Drawing::clouds = loadTexture("assets/cloud.png"); 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	//gTexture = loadTexture("clouds.png"); 
 	if (Drawing::assets == NULL|| gTexture == NULL)

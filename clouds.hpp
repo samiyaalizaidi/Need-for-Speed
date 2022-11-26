@@ -1,8 +1,7 @@
 #include <SDL.h>
 //#include  "unit.hpp"
 #include "drawing.hpp"
-#include<vector>
-#include<list>
+#pragma once
 
 class clouds {
     //friend class RunningMan;
