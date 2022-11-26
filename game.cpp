@@ -94,7 +94,7 @@ bool Game::loadMedia()
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
-	Drawing::clouds = loadTexture("clouds.png"); 
+	Drawing::clouds = loadTexture("assets/clouds.png"); 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	//gTexture = loadTexture("clouds.png"); 
 	if (Drawing::assets == NULL|| gTexture == NULL)
@@ -110,6 +110,7 @@ void Game::close()
 	// Free loaded images
 	SDL_DestroyTexture(Drawing::assets);
 	SDL_DestroyTexture(Drawing::attack);
+	SDL_DestroyTexture(Drawing::clouds);
 	Drawing::assets = NULL;
 	Drawing::attack = NULL;
 	SDL_DestroyTexture(gTexture);
@@ -160,6 +161,7 @@ void Game::run()
 	string direction = "reset"; // to call the mover functions
 	bool checkAttack = false;
 	cloudmanager c2;
+	cloudmanager c3;
 	while (!quit)
 	{		
 		// Handle events on queue
@@ -252,7 +254,9 @@ void Game::run()
 			//****************************************************************
 			if(state==2){
 				c2.creatobj();
+				c3.creatobj1();
 				c2.drawobj();
+				c3.drawobj1();
 			}
 			SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
