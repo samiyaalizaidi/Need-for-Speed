@@ -9,7 +9,11 @@ SDL_Texture *Drawing::assets = NULL;
 SDL_Texture *Drawing::attack = NULL;
 SDL_Texture *Drawing::clouds = NULL;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+SDL_Texture *Drawing::diamond = NULL;
+>>>>>>> Stashed changes
 =======
 SDL_Texture *Drawing::diamond = NULL;
 >>>>>>> Stashed changes
@@ -100,8 +104,13 @@ bool Game::loadMedia()
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 
+=======
+	Drawing::clouds = loadTexture("assets/clouds.png"); 
+	Drawing::diamond= loadTexture("assets/diamond.png"); 
+>>>>>>> Stashed changes
 =======
 	Drawing::clouds = loadTexture("assets/clouds.png"); 
 	Drawing::diamond= loadTexture("assets/diamond.png"); 
@@ -123,17 +132,23 @@ void Game::close()
 	SDL_DestroyTexture(Drawing::attack);
 	SDL_DestroyTexture(Drawing::clouds);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 	Drawing::assets = NULL;
 	Drawing::attack = NULL;
 	Drawing::clouds = NULL;
 	
 =======
+=======
+>>>>>>> Stashed changes
 	SDL_DestroyTexture(Drawing::diamond);
 	Drawing::diamond = NULL;
 	Drawing::assets = NULL;
 	Drawing::attack = NULL;
 	Drawing::clouds = NULL;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	SDL_DestroyTexture(gTexture);
 
@@ -185,7 +200,11 @@ void Game::run()
 	cloudmanager c2;
 	cloudmanager c3;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	
+=======
+	cloudmanager d;
+>>>>>>> Stashed changes
 =======
 	cloudmanager d;
 >>>>>>> Stashed changes
@@ -245,8 +264,11 @@ void Game::run()
 				//ship.adjust(); // if the button is not pressed the ship will be straight
 			}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		}
 =======
+=======
+>>>>>>> Stashed changes
 		
 			// to create bombs with 5% probability
 
