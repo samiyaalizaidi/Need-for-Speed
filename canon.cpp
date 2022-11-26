@@ -6,9 +6,17 @@ void Canon::setAttack(){
     moverRect = {78, 23, 24, 24};
 }
 
-Canon::Canon(int x, int y){
-    // moverRect.x = x;
-    // moverRect.y = y;
+Canon::Canon(std::string direction){
+
+    // assigning positions depending on the direction of movement
     srcRect = {0, 0, 24, 24};
-    moverRect = {10, 650, 24, 24};
+    if(direction == "northeast"){
+        moverRect = {10, 650, 24, 24};
+    }
+    else if(direction == "northwest"){
+        moverRect = {1100, 650, 24, 24};
+    }
+    else{
+        moverRect = {650, 650, 24, 24};
+    }
 }
