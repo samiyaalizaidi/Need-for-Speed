@@ -232,11 +232,11 @@ void Game::run()
 
 			ship.draw(); // display the ship
 
-			// if(attack.DetectCollision(ship.getRect())){
-			// 	checkAttack = true;
-			// 	ship.showAttack();
-			// 	cout << "collision detected" << endl;
-			// }
+			if(attack.DetectCollision(ship.getRect())){
+				checkAttack = true;
+				ship.showAttack();
+				cout << "collision detected" << endl;
+			}
 
 			if (direction == "up" and  state == 2)
 			{

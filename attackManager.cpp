@@ -56,13 +56,23 @@ AttackManager::~AttackManager(){
     cout << "everything deleted" << endl;
 }
 
-// bool AttackManager::DetectCollision(SDL_Rect coord){
-//     for(Attack* attack : lst){
-//         if(attack->getX() == coord.x){
-//             if((attack->getY() >= coord.y) && (attack->getX() <= (coord.y + coord.h))){
-//                 return true;
-//             }
-//         }
-//     }
-//     return false;
-// }
+bool AttackManager::DetectCollision(SDL_Rect coord){
+    int h = coord.h; 
+    int w = coord.w;
+    int x = coord.x;
+    int y = coord.y;
+    // int 
+    for(auto attack : bombs){
+        if(x == attack.first->getX()){
+            if(y >= attack.first->getY() && y <= (attack.first->getY() + 70)){
+                return true;
+            }
+        }
+        else if(y == attack.first->getY()){
+            if(x >= attack.first->getX() && x <= (attack.first->getX() + 71)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
