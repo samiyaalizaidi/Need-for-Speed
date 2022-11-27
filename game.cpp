@@ -116,10 +116,12 @@ void Game::close()
 	SDL_DestroyTexture(Drawing::attack);
 	SDL_DestroyTexture(Drawing::clouds);
 	SDL_DestroyTexture(Drawing::diamond);
+
 	Drawing::diamond = NULL;
 	Drawing::assets = NULL;
 	Drawing::attack = NULL;
 	Drawing::clouds = NULL;
+	
 	SDL_DestroyTexture(gTexture);
 
 	// Destroy window
@@ -213,9 +215,11 @@ void Game::run()
 				switch( e.key.keysym.sym ){
                     case SDLK_UP:
                         direction = "up";
+						ship.moveup();
                         break;
                     case SDLK_DOWN:
                         direction = "down";
+						ship.move_down();
                         break;
                     default:
                         break;
@@ -253,21 +257,20 @@ void Game::run()
 			cout << "collision detected" << endl;
 		}
 
-		// to move up
-		if (direction == "up" and  state == 2)
-		{
-			ship.moveup();
-			direction = "reset";
-		}
+		// // to move up
+		// if (direction == "up" and  state == 2)
+		// {
+		// 	ship.moveup();
+		// 	direction = "reset";
+		// }
 
-		// to move down
-		else if (direction == "down" and state == 2)
-		{
-			ship.move_down();
-			direction = "reset";
-		}
+		// // to move down
+		// else if (direction == "down" and state == 2)
+		// {
+		// 	ship.move_down();
+		// 	direction = "reset";
+		// }
 
-		
 		if(state==2){
 			c2.creatobj();
 			c3.creatobj1();
