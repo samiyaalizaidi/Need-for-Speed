@@ -237,11 +237,6 @@ void Game::run()
 		
 		SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
-		
-		attack.drawObjects(); // display the bombs
-
-		ship.draw(); // display the ship
-
 
 		// to create bombs with 5% probability
 		int y = rand() % 20;
@@ -272,22 +267,8 @@ void Game::run()
 			d.creatobj2();
 			d.drawobj2();
 		}
-		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
-
-		// // to move up
-		// if (direction == "up" and  state == 2)
-		// {
-		// 	ship.moveup();
-		// 	direction = "reset";
-		// }
-
-		// // to move down
-		// else if (direction == "down" and state == 2)
-		// {
-		// 	ship.move_down();
-		// 	direction = "reset";
-		// }
 		
+		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
 		SDL_Delay(50); // causes sdl engine to delay for specified miliseconds		
 	}
