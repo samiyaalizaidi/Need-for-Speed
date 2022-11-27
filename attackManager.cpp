@@ -14,6 +14,9 @@ void AttackManager::drawObjects(){
             else if(attack.second == "northwest"){
                 attack.first->move_NorthWest();
             }
+            else if(attack.second == "laser"){
+                attack.first->move_right();
+            }
             else{
                 attack.first->move_up();
             }
@@ -23,24 +26,31 @@ void AttackManager::drawObjects(){
 
 void AttackManager::createObject(){
     // generate bombs at random positions
-    int s = rand() % 3;
+    int att = rand() % 2;
+    if(att == 0){
+        int s = rand() % 3;
 
-    switch (s)
-    {
-    case 0: // coming from left side of the screen
-        bombs.insert(pair<Attack*, string>(new Canon("northeast"), "northeast"));
-        break;
+        switch (s)
+        {
+        case 0: // coming from left side of the screen
+            bombs.insert(pair<Attack*, string>(new Canon("northeast"), "northeast"));
+            break;
+        
+        case 1: // coming from the right side of the screen 
+            bombs.insert(pair<Attack*, string>(new Canon("northwest"), "northwest"));
+            break;
+
+        case 2: // coming from the middle of the screen
+            bombs.insert(pair<Attack*, string>(new Canon("up"), "up"));   
+            break;
+
+        default:
+            break;
+        }
+    }
     
-    case 1: // coming from the right side of the screen 
-        bombs.insert(pair<Attack*, string>(new Canon("northwest"), "northwest"));
-        break;
-
-    case 2: // coming from the middle of the screen
-        bombs.insert(pair<Attack*, string>(new Canon("up"), "up"));   
-        break;
-
-    default:
-        break;
+    else{
+        bombs.insert(pair<Attack*, string>(new Laser(), "laser"));  
     }
 }
 

@@ -2,7 +2,9 @@
 
 class Canon : public Attack{
     public:
-        // Canon(int x, int y);
+        // constructor
         Canon(std::string);
-        void setAttack();
+
+        // runtime polymorphism
+        void draw();
 };

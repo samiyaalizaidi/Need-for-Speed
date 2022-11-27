@@ -1,10 +1,9 @@
 #include "canon.hpp"
 
-void Canon::setAttack(){
-    std::cout << "canon launched" << std::endl;
-    srcRect = {0, 0, 24, 24};
-    moverRect = {78, 23, 24, 24};
+void Canon::draw(){
+    SDL_RenderCopy(Drawing::gRenderer, Drawing::attack, &srcRect, &moverRect);
 }
+
 
 Canon::Canon(std::string direction){
     // for assigning positions randomly

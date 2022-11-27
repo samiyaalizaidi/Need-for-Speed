@@ -9,5 +9,6 @@ class Drawing{
     static SDL_Texture* attack;
     static SDL_Texture* clouds;
     static SDL_Texture* diamond;
+    static SDL_Texture* laser;
 };
 //assets

@@ -2,5 +2,9 @@
 
 class Laser : public Attack{
     public:
-        void setAttack();
+        // constructor
+        Laser();
+
+        // runtime polymorphism
+        void draw();
 };

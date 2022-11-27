@@ -9,6 +9,7 @@ SDL_Texture *Drawing::assets = NULL;
 SDL_Texture *Drawing::attack = NULL;
 SDL_Texture *Drawing::clouds = NULL;
 SDL_Texture *Drawing::diamond = NULL;
+SDL_Texture *Drawing::laser = NULL;
 
 bool Game::init()
 {
@@ -97,7 +98,8 @@ bool Game::loadMedia()
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
-	Drawing::diamond= loadTexture("assets/diamond.png"); // for the diamonds
+	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
+	Drawing::laser = loadTexture("assets/beams.png"); // for the laser
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
@@ -116,12 +118,14 @@ void Game::close()
 	SDL_DestroyTexture(Drawing::attack);
 	SDL_DestroyTexture(Drawing::clouds);
 	SDL_DestroyTexture(Drawing::diamond);
+	SDL_DestroyTexture(Drawing::laser);
 
 	Drawing::diamond = NULL;
 	Drawing::assets = NULL;
 	Drawing::attack = NULL;
 	Drawing::clouds = NULL;
-
+	Drawing::laser = NULL;
+	
 	SDL_DestroyTexture(gTexture);
 
 	// Destroy window
@@ -230,18 +234,6 @@ void Game::run()
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
 		}
-		// to create bombs with 5% probability
-
-		int x = rand() % 20;
-		switch (x)
-		{
-			case 1:
-				attack.createObject();
-				break;
-			
-			default:
-				break;
-		}
 		
 		SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
@@ -295,15 +287,7 @@ void Game::run()
 		// 	ship.move_down();
 		// 	direction = "reset";
 		// }
-
-		if(state==2){
-			c2.creatobj();
-			c3.creatobj1();
-			c2.drawobj();
-			c3.drawobj1();
-		}
 		
-		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
 		SDL_Delay(50); // causes sdl engine to delay for specified miliseconds		
 	}
