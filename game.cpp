@@ -99,6 +99,27 @@ bool Game::loadMedia()
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
+	// Drawing::laser = loadTexture("assets/beams.png"); // for the laser -> we dont need laser here
+
+	gTexture = loadTexture("assets/Background.png"); // for the background image
+	
+	if (Drawing::assets == NULL|| gTexture == NULL)
+	{
+		printf("Unable to run due to error: %s\n", SDL_GetError());
+		success = false;
+	}
+	return success;
+}
+
+bool Game::loadLevelTwo()
+{
+		// Loading success flag
+	bool success = true;
+
+	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
+	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
+	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
+	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
 	Drawing::laser = loadTexture("assets/beams.png"); // for the laser
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
@@ -176,6 +197,7 @@ void Game::run()
 	cloudmanager c2;
 	cloudmanager c3;
 	cloudmanager d;
+
 	while (!quit)
 	{		
 		// Handle events on queue
@@ -185,7 +207,7 @@ void Game::run()
 			if (e.type == SDL_QUIT)
 			{
 				quit = true;
-				cout << quit;
+				cout << quit << endl;
 			}
 	
 			// mouse button pressed
@@ -217,14 +239,17 @@ void Game::run()
 			// a key is pressed
 			else if(e.type == SDL_KEYDOWN){
 				switch( e.key.keysym.sym ){
+
                     case SDLK_UP:
                         direction = "up";
 						ship.moveup();
                         break;
+
                     case SDLK_DOWN:
                         direction = "down";
 						ship.move_down();
                         break;
+
                     default:
                         break;
                 }
@@ -238,19 +263,19 @@ void Game::run()
 		SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
 
-		// to create bombs with 5% probability
+		// to create attacks with 5% probability
 		int y = rand() % 20;
 		switch (y)
 		{
 			case 1:
-				attack.createObject();
+				attack.createObject(state);
 				break;
 			
 			default:
 				break;
 		}
 		
-		attack.drawObjects(); // display the bombs
+		attack.drawObjects(); // display the attacks
 
 		ship.draw(); // display the ship
 

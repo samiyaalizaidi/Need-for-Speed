@@ -1,12 +1,12 @@
 #include "attackManager.hpp"
 
 void AttackManager::drawObjects(){
-    // draw all the bombs
-    for(auto attack : bombs){
+    // draw all the attacks
+    for(auto attack : attacks){
         if(attack.first != NULL){
             attack.first->draw();
 
-            // move according to the bomb's origin
+            // move according to the attack's origin
 
             if(attack.second == "northeast"){
                 attack.first->move_NorthEast();
@@ -24,45 +24,47 @@ void AttackManager::drawObjects(){
     }
 }
 
-void AttackManager::createObject(){
-    // generate bombs at random positions
-    int att = rand() % 2;
-    if(att == 0){
-        int s = rand() % 3;
+void AttackManager::createObject(int state){
+    // choose which attack to shoot
+    int att = rand() % 2; 
 
+    // if in level 1, this is the only option. In level 2, it depends on the value of att
+    if((att == 0 && state == 3) || state == 2){
+        // selects a random position to attack from
+        int s = rand() % 3;
         switch (s)
         {
-        case 0: // coming from left side of the screen
-            bombs.insert(pair<Attack*, string>(new Canon("northeast"), "northeast"));
+        case 0: // coming from the left side of the screen
+            attacks.insert(pair<Attack*, string>(new Canon("northeast"), "northeast"));
             break;
         
         case 1: // coming from the right side of the screen 
-            bombs.insert(pair<Attack*, string>(new Canon("northwest"), "northwest"));
+            attacks.insert(pair<Attack*, string>(new Canon("northwest"), "northwest"));
             break;
 
         case 2: // coming from the middle of the screen
-            bombs.insert(pair<Attack*, string>(new Canon("up"), "up"));   
+            attacks.insert(pair<Attack*, string>(new Canon("up"), "up"));   
             break;
 
         default:
             break;
         }
     }
-    
-    else{
-        bombs.insert(pair<Attack*, string>(new Laser(), "laser"));  
+    // will only work if we're in level 2 or state 3
+    else if(att == 1 && state == 3){
+        attacks.insert(pair<Attack*, string>(new Laser(), "laser"));  
     }
 }
 
 AttackManager::~AttackManager(){
-    // release memory allocated to all the keys.
-    for(auto attack : bombs){
+    // release dynamic memory allocated to all the keys.
+    for(auto attack : attacks){
         if(attack.first != NULL){
             delete attack.first;
             // bombs.erase(attack.first);
         }
     }
-    bombs.clear(); // clear the map
+    attacks.clear(); // clear the map
     cout << "everything deleted" << endl;
 }
 
@@ -72,13 +74,13 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
     int x = coord.x;
     int y = coord.y;
     // int 
-    for(auto attack : bombs){
-        if(x == attack.first->getX()){
+    for(auto attack : attacks){
+        if((x == attack.first->getX()) || ((x + w) == attack.first->getX())){
             if(y >= attack.first->getY() && y <= (attack.first->getY() + 70)){
                 return true;
             }
         }
-        else if(y == attack.first->getY()){
+        else if((y == attack.first->getY()) || ((y + h) == attack.first->getY())){
             if(x >= attack.first->getX() && x <= (attack.first->getX() + 71)){
                 return true;
             }

@@ -27,13 +27,31 @@ class Game{
     list<Attack*> lst;
     
 public:
+    // for selecting the page that needs to be diplayed
     int state = 0;
+
+    // initializes the renderer
     bool init();
+
+    // loads the start page
     bool loadMenu();
+
+    // loads the level one of the game
     bool loadMedia();
+
+    // loads the rules page of the game 
     bool loadRules();
+
+    // loads the level two of the game
+    bool loadLevelTwo();
+
+    // closes everything; sets the pointers to nullptr
     void close();
+
+    // loads all the textures; sets the path
     SDL_Texture* loadTexture( std::string path );
+
+    // main work happens here
     void run();
     int x=0;
 };
