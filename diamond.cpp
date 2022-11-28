@@ -6,7 +6,7 @@ diamond::diamond(int x, int y){
     // src coorinates from assets.png file, they have been found using spritecow.com
     srcRect = {1,1,711,517};
      // setting pigeon x and y values
-    moverRect = {500,450,100,100};
+    moverRect = {x,y,50,50};
 }
 
 diamond::diamond(){
@@ -22,10 +22,10 @@ void diamond::draw(){
 }
 
 void diamond::move(){
-    if (moverRect.x < 0){
+   /*  if (moverRect.x < 0){
      //   count ++;
-        moverRect.x = 1200;
-        moverRect.x -= 13;
-    }
-    else{moverRect.x -= 13;}
+        moverRect.x = 980;
+        moverRect.x -= 13;}
+    else{moverRect.x -=10;} */
+    moverRect.x -=10;
 } 
