@@ -39,9 +39,5 @@ void clouds1::draw(){
 }
 
 void clouds1::move(){
-    if (moverRect.x < 0){
-     //   count ++;
-        moverRect.x = 1200;
-        moverRect.x -= 13;}
-    else{moverRect.x -= 13;}
+    moverRect.x -= 13;
 } 
