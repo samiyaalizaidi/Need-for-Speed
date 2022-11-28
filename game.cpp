@@ -197,6 +197,8 @@ void Game::run()
 	cloudmanager c2;
 	cloudmanager c3;
 	cloudmanager d;
+	bool moveLevel;
+	bool collisionCheck;
 
 	while (!quit)
 	{		
@@ -234,6 +236,10 @@ void Game::run()
 					state = 0;
 					loadMenu();
 				}
+				else if (state == 2 && moveLevel){
+					state = 3;
+					loadLevelTwo();
+				}
 			}
 
 			// a key is pressed
@@ -268,7 +274,7 @@ void Game::run()
 		switch (y)
 		{
 			case 1:
-				attack.createObject(3);
+				attack.createObject(3); 
 				break;
 			
 			default:

@@ -78,9 +78,11 @@ void cloudmanager::creatobj2(){
 void cloudmanager::drawobj2(){
     int size=0;
     while(size<dim.size()){
+        if(dim[size] != NULL){
         dim[size]->draw();
         dim[size]->move();
         size++;
+        }
     }
 }
 
@@ -99,21 +101,46 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
     int w = coord.w;
     int x = coord.x;
     int y = coord.y;
- 
+    int i = 0;
+
     for(auto diamond : dim){
-        if(diamond->getX() == (x + w)){
-            // if(y >= diamond->getY() && y <= (diamond->getY() + 50)){
-            //     return true;
-            // }
-            if(diamond->getY() >= y && y <= (h + diamond->getY())){
+        if((x + w) == diamond->getX()){
+            if(diamond->getY() >= y && diamond->getY() <= (y + h)){
+                delete diamond;
+                diamond = NULL;
+                dim.erase(dim.begin() + i);
+                cout << "diamond deleted" << endl;
+                return true;
+            }
+        }
+        else if(x == diamond->getX()){
+            if(diamond->getY() >= y && diamond->getY() <= (y + h)){
+                delete diamond;
+                diamond = NULL;
+                dim.erase(dim.begin() + i);
+                cout << "diamond deleted" << endl;
+                return true;
+            }
+        }
+        else if((x + w) == diamond->getX()){
+            if(diamond->getY() <= y && y <= (diamond->getY() + 50)){
+                delete diamond;
+                diamond = NULL;
+                dim.erase(dim.begin() + i);
+                cout << "diamond deleted" << endl;
                 return true;
             }
         }
         else if(diamond->getY() == y){
-            if(x >= diamond->getX() && y <= (diamond->getX() + 50)){
+            if((x + w) >= diamond->getX() && (x + w) <= diamond->getY()){
+                delete diamond;
+                diamond = NULL;
+                dim.erase(dim.begin() + i);
+                cout << "diamond deleted" << endl;
                 return true;
             }
         }
+        i++;
     }
     return false;
 }
