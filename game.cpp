@@ -99,7 +99,7 @@ bool Game::loadMedia()
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
-	Drawing::laser = loadTexture("assets/beams.png"); // for the laser -> we dont need laser here
+	// Drawing::laser = loadTexture("assets/beams.png"); // for the laser -> we dont need laser here
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
@@ -120,7 +120,7 @@ bool Game::loadLevelTwo()
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
-	// Drawing::laser = loadTexture("assets/beams.png"); // for the laser
+	Drawing::laser = loadTexture("assets/beams.png"); // for the laser
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
@@ -199,6 +199,7 @@ void Game::run()
 	cloudmanager d;
 	bool moveLevel;
 	bool collisionCheck;
+	int count = 0;
 
 	while (!quit)
 	{		
@@ -274,7 +275,7 @@ void Game::run()
 		switch (y)
 		{
 			case 1:
-				attack.createObject(3); 
+				attack.createObject(state); 
 				break;
 			
 			default:
@@ -295,7 +296,13 @@ void Game::run()
 
 		// ship's collision with diamonds
 		if(d.DetectCollision(ship.getRect())){
-			cout << "found diamond" << endl;
+			cout << "found diamond" << endl; count++;
+
+			// move to level two if the player has collected 10 diamonds
+			if(state == 2 && d.diamondsCollected == 10){
+				moveLevel = true; state = 3; loadLevelTwo();
+				cout << "entered level 2 " << endl;
+			}
 		}
 
 		if(state==2){
