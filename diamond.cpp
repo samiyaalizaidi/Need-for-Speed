@@ -29,3 +29,11 @@ void diamond::move(){
     else{moverRect.x -=10;} */
     moverRect.x -=10;
 } 
+
+int diamond::getX(){
+    return moverRect.x;
+}
+
+int diamond::getY(){
+    return moverRect.y;
+}

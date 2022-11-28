@@ -73,15 +73,15 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
     int w = coord.w;
     int x = coord.x;
     int y = coord.y;
-    // int 
+ 
     for(auto attack : attacks){
-        if((x == attack.first->getX()) || ((x + w) == attack.first->getX())){
-            if(y >= attack.first->getY() && y <= (attack.first->getY() + 70)){
-                return true;
+        if(x == attack.first->getX()){
+            if(attack.first->getY() >= y && attack.first->getY() <= (y + h)){
+                return true;    
             }
         }
-        else if((y == attack.first->getY()) || ((y + h) == attack.first->getY())){
-            if(x >= attack.first->getX() && x <= (attack.first->getX() + 71)){
+        else if(y == attack.first->getY()){
+            if((x + w) >= attack.first->getX() && (x + w) <= (attack.first->getX() + w)){
                 return true;
             }
         }

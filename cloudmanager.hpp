@@ -18,6 +18,7 @@ class cloudmanager{
         void creatobj1();
         void drawobj2();
         void creatobj2();
+        bool DetectCollision(SDL_Rect);
         int check1=0;
         int check=0;
         int check2=0;

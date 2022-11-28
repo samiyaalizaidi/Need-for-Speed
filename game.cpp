@@ -99,7 +99,7 @@ bool Game::loadMedia()
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
-	// Drawing::laser = loadTexture("assets/beams.png"); // for the laser -> we dont need laser here
+	Drawing::laser = loadTexture("assets/beams.png"); // for the laser -> we dont need laser here
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
@@ -120,7 +120,7 @@ bool Game::loadLevelTwo()
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
-	Drawing::laser = loadTexture("assets/beams.png"); // for the laser
+	// Drawing::laser = loadTexture("assets/beams.png"); // for the laser
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
@@ -268,7 +268,7 @@ void Game::run()
 		switch (y)
 		{
 			case 1:
-				attack.createObject(state);
+				attack.createObject(3);
 				break;
 			
 			default:
@@ -280,11 +280,18 @@ void Game::run()
 		d.drawobj2();
 		ship.draw(); // display the ship
 
+		// ship's collision with attacks
 		if(attack.DetectCollision(ship.getRect())){
 			checkAttack = true;
 			ship.showAttack();
 			cout << "collision detected" << endl;
 		}
+
+		// ship's collision with diamonds
+		if(d.DetectCollision(ship.getRect())){
+			cout << "found diamond" << endl;
+		}
+
 		if(state==2){
 			c2.creatobj();
 			c3.creatobj1();

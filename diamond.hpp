@@ -13,4 +13,6 @@ class diamond {
     void move();
     diamond();
     diamond(int, int);
+    int getX();
+    int getY();
 }; 
