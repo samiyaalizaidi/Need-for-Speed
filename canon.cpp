@@ -52,11 +52,11 @@ Canon::Canon(std::string direction){
         switch (x)
         {
         case 0:
-            moverRect = {650, 650, 24, 24};
+            moverRect = {700, 650, 24, 24};
             break;
         
         case 1:
-            moverRect = {550, 650, 24, 24};
+            moverRect = {500, 650, 24, 24};
             break;
 
         case 2:

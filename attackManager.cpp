@@ -75,13 +75,20 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
     int y = coord.y;
  
     for(auto attack : attacks){
+        // remove the attack from the screen and deduct points for attack
         if(x == attack.first->getX()){
             if(attack.first->getY() >= y && attack.first->getY() <= (y + h)){
+                Attack* temp = attack.first;
+                attacks.erase(attack.first);
+                temp = nullptr;
                 return true;    
             }
         }
         else if(y == attack.first->getY()){
             if((x + w) >= attack.first->getX() && (x + w) <= (attack.first->getX() + w)){
+                Attack* temp = attack.first;
+                attacks.erase(attack.first);
+                temp = nullptr;
                 return true;
             }
         }

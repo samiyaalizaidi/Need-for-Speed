@@ -52,7 +52,6 @@ void cloudmanager::creatobj2(){
         case 0:
                 // cout << "diamond created1"<<endl;
                 d1 = new diamond(1200,300);
-
                 break;
         case 1:
                 // cout << "diamond created2"<<endl;
@@ -110,6 +109,7 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
                 diamond = NULL;
                 dim.erase(dim.begin() + i);
                 cout << "diamond deleted" << endl;
+                diamondsCollected++;
                 return true;
             }
         }
@@ -119,6 +119,7 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
                 diamond = NULL;
                 dim.erase(dim.begin() + i);
                 cout << "diamond deleted" << endl;
+                diamondsCollected++;
                 return true;
             }
         }
@@ -128,6 +129,7 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
                 diamond = NULL;
                 dim.erase(dim.begin() + i);
                 cout << "diamond deleted" << endl;
+                diamondsCollected++;
                 return true;
             }
         }
@@ -137,6 +139,7 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
                 diamond = NULL;
                 dim.erase(dim.begin() + i);
                 cout << "diamond deleted" << endl;
+                diamondsCollected++;
                 return true;
             }
         }
