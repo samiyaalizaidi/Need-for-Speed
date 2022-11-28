@@ -275,14 +275,9 @@ void Game::run()
 				break;
 		}
 		
-<<<<<<< HEAD
-		attack.drawObjects(); // display the attacks
-
-=======
 		attack.drawObjects(); // display the bombs
 		d.creatobj2();
 		d.drawobj2();
->>>>>>> 40ea5f9527a0f72cd56cbaf79bedc354eb28233c
 		ship.draw(); // display the ship
 
 		if(attack.DetectCollision(ship.getRect())){
