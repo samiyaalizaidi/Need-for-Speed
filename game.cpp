@@ -251,7 +251,8 @@ void Game::run()
 		}
 		
 		attack.drawObjects(); // display the bombs
-
+		d.creatobj2();
+		d.drawobj2();
 		ship.draw(); // display the ship
 
 		if(attack.DetectCollision(ship.getRect())){
@@ -264,8 +265,7 @@ void Game::run()
 			c3.creatobj1();
 			c2.drawobj();
 			c3.drawobj1();
-			d.creatobj2();
-			d.drawobj2();
+			
 		}
 		
 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
