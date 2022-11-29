@@ -61,7 +61,12 @@ void AttackManager::createObject(int state){
     }
     if(Health.health==0){
         Health.life_check();
+        if(Health.lives==0){
+            state==4;//end game
+            gTexture = loadTexture("assets/game_over.png");
+        }
     }
+
 }
 
 AttackManager::~AttackManager(){

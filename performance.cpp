@@ -58,5 +58,5 @@ void Performance::life_check(){
     }
     else if(lives==1){
         lives--;
-        state=5;//game end
+        
     }}

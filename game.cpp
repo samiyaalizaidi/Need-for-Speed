@@ -248,7 +248,8 @@ void Game::run()
 						state = 2;
 						
 					} 
-				}  
+				}
+			   
 			}
 
 			// a key is pressed
