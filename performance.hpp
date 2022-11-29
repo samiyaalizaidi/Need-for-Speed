@@ -1,5 +1,7 @@
 #include<iostream>
+#include "attackManager.hpp"
 using namespace std;
+
 
 /* 
 this class is for the health and lives of our spaceship.
@@ -12,17 +14,18 @@ Class functions:
         after an attack - either laser or canon.
 */
 
-class Performance{
-    private:
+class Performance:{//public AttackManager{
+    public:
         int health;
         int lives;
-    public:
+
+        void health_deter();
         int getlife();
         Performance();
-        void health_deter(string); // determines the health
         int getHealth(); // getter for health
         void CanonAttack(); // adjusts for health
-
+        void laserAttack(); 
         bool alive = true ;
-        
+        void health_deter();
+        void life_check();
 };

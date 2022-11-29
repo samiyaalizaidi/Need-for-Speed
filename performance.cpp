@@ -5,13 +5,10 @@ Performance::Performance(){
     health = 100;
     lives = 2;
 }
-
-int Performance::getlife(){return lives;}
-
-void Performance::health_deter(string attack){
+/* void Performance::health_deter(){
     if (lives == 2){
         if (health>0){
-            if (attack == "canon"){
+            if (a_type == "canon"){
                 health -=20;
             }
             else{//laser
@@ -21,7 +18,7 @@ void Performance::health_deter(string attack){
         else if(health=0){
             lives -- ;
             if (health>0){
-                if (attack == "canon"){
+                if (a_type == "canon"){
                     health -=20;
                 }
                 else{ //laser
@@ -32,7 +29,7 @@ void Performance::health_deter(string attack){
     }
     else if(lives ==1){
         if (health>0){
-            if (attack == "canon"){
+            if (a_type == "canon"){
                 health -=20;
             }
             else{ //laser attack
@@ -44,12 +41,22 @@ void Performance::health_deter(string attack){
             alive = false;
         }
     }
-}
+} */
 
 int Performance::getHealth(){
     return health;
 }
 
 void Performance::CanonAttack(){
-    health -= 10;
-}
+    health -= 20;      }
+void Performance::laserAttack(){
+    health -= 10;      }
+void Performance::life_check(){
+    if (lives==2) {
+        health==100;
+        lives--;
+    }
+    else if(lives==1){
+        lives--;
+        state=5;//game end
+    }}

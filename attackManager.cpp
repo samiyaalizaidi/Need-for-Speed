@@ -26,10 +26,12 @@ void AttackManager::drawObjects(){
 
 void AttackManager::createObject(int state){
     // choose which attack to shoot
+    //string attack_type; //holds type of attack 
     int att = rand() % 2; 
-
     // if in level 1, this is the only option. In level 2, it depends on the value of att
     if((att == 0 && state == 3) || state == 2){
+        a_type = "canon";
+        Health.CanonAttack();
         // selects a random position to attack from
         int s = rand() % 3;
         switch (s)
@@ -49,10 +51,16 @@ void AttackManager::createObject(int state){
         default:
             break;
         }
+
     }
     // will only work if we're in level 2 or state 3
     else if(att == 1 && state == 3){
+        Health.laserAttack();
+        a_type = "laser";
         attacks.insert(pair<Attack*, string>(new Laser(), "laser"));  
+    }
+    if(Health.health==0){
+        Health.life_check();
     }
 }
 
@@ -78,6 +86,8 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
         // remove the attack from the screen and deduct points for attack
         if(x == attack.first->getX()){
             if(attack.first->getY() >= y && attack.first->getY() <= (y + h)){
+                //whatever is the type of attack, health decrement is 10;
+                //ship_health.health-=10;
                 Attack* temp = attack.first;
                 attacks.erase(attack.first);
                 temp = nullptr;
@@ -86,6 +96,8 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
         }
         else if(y == attack.first->getY()){
             if((x + w) >= attack.first->getX() && (x + w) <= (attack.first->getX() + w)){
+                //whatever is the type of attack, health decrement is 10;
+                //ship_health.health-=10;
                 Attack* temp = attack.first;
                 attacks.erase(attack.first);
                 temp = nullptr;
