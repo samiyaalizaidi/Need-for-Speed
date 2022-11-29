@@ -14,12 +14,11 @@ int main(int argc, char *argv[]){
 		printf( "Failed to initialize!\n" );
         return 0;
 	}
-		// start with menu
+    // start with menu
     if( !game.loadMenu() ){
         printf( "Failed to load media!\n" );
         return 0;
-    }
-
+    }   
     game.run();
     game.close();
 

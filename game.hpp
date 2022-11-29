@@ -2,6 +2,7 @@
 #include <SDL_image.h>
 #include <stdio.h>
 #include <iostream>
+#include <SDL_mixer.h>
 #include <string>
 #include <stdlib.h>
 #include <time.h>

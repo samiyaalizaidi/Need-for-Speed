@@ -11,13 +11,16 @@ SDL_Texture *Drawing::clouds = NULL;
 SDL_Texture *Drawing::diamond = NULL;
 SDL_Texture *Drawing::laser = NULL;
 
+
+
+
 bool Game::init()
 {
 	// Initialization flag
 	bool success = true;
 
 	// Initialize SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
 		printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
 		success = false;
@@ -29,7 +32,7 @@ bool Game::init()
 		{
 			printf("Warning: Linear texture filtering not enabled!");
 		}
-
+		
 		// Create window
 		gWindow = SDL_CreateWindow("NEED FOR SPEED", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		if (gWindow == NULL)
@@ -188,6 +191,15 @@ SDL_Texture *Game::loadTexture(std::string path)
 
 void Game::run()
 {
+	// for the music
+	int init2 = Mix_Init(MIX_INIT_OGG);
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
+    Mix_Music* music = Mix_LoadMUS("assets/Music/bgMusic.ogg"); // background music
+	Mix_Chunk* button = Mix_LoadWAV("assets/Music/buttonClick.wav"); // button click sound
+	Mix_Chunk* attackSound = Mix_LoadWAV("assets/Music/attack.wav"); // laser + canon attack sound
+	Mix_Chunk* diamondFound = Mix_LoadWAV("assets/Music/diamondFound.wav"); // when diamond is collected
+	
+	Mix_PlayMusic(music, -1); // plays the bg music in loop
 	bool quit = false;
 	SDL_Event e;
 
@@ -201,6 +213,7 @@ void Game::run()
 	bool moveLevel;
 	bool collisionCheck;
 	int count = 0;
+	int adjust = 0;
 
 	while (!quit)
 	{		
@@ -223,17 +236,20 @@ void Game::run()
 				if (state == 0 and xMouse >= 487 and xMouse <= 710 and yMouse >= 456 and yMouse <= 548)
 				{
 					state = 2; // state2 represents the game has started (play is pressed)
+					Mix_PlayChannel(-1, button, 0);
 					loadMedia();
 					
 				}
 				else if (state == 0 and xMouse >= 485 and xMouse <= 713 and yMouse >= 573 and yMouse <= 654)
 				{
 					state = 1; // state 1 is the rules page
+					Mix_PlayChannel(-1, button, 0);
 					loadRules();
 				}
 				else if (state == 1 and xMouse >= 42 and xMouse <= 197 and yMouse >= 583 and yMouse <= 641)
 				{
 					state = 0;
+					Mix_PlayChannel(-1, button, 0);
 					loadMenu();
 				}
 			  	else if (state == 5){
@@ -241,13 +257,16 @@ void Game::run()
 					if ((xMouse >= 496 && xMouse <= 700) && (yMouse >= 501 && yMouse <= 583))
 					{
 						state = 3;
+						Mix_PlayChannel(-1, button, 0);
 						loadLevelTwo();						
 					} 
 				}
+
 			}
 
 			// a key is pressed
 			else if(e.type == SDL_KEYDOWN){
+				adjust = 0;
 				switch( e.key.keysym.sym ){
 
                     case SDLK_UP:
@@ -287,14 +306,16 @@ void Game::run()
 				break;
 		}
 		
-		// display the ship
-
 		// ship's collision with attacks
 		if(attack.DetectCollision(ship.getRect())){
 			checkAttack = true;
 			ship.showAttack();
+			adjust++;
 			cout << "collision detected" << endl;
-			     //whatever is the type of attack, health decrement is 10;
+
+			Mix_PlayChannel(-1, attackSound, 0); // play the attack sound
+
+			//whatever is the type of attack, health decrement is 10;
             Health.CanonAttack();
 			if(Health.health==0){
 				Health.life_check();
@@ -304,30 +325,38 @@ void Game::run()
 					gTexture = loadTexture("assets/game_over.png");
 					state=4;//end game
 				}
-    }
+    		}
 		}
 
 		// ship's collision with diamonds
 		if(d.DetectCollision(ship.getRect())){
 			cout << "found diamond" << endl; count++;
-
+			Mix_PlayChannel(-1, diamondFound, 0); // play the diamond collected sound
 			// move to level two if the player has collected 10 diamonds
 			if(state == 2 && d.diamondsCollected == 10){
 				moveLevel = true; state = 5; //state5 is just a temp state of level2
 				gTexture = loadTexture("assets/level2.png");
 			}
 		}
+		if(adjust > 0){adjust++;}
 
-		if(state==2 || state==3 ){
+		if(adjust >= 100){
+			ship.adjust();
+		}
+
+		if(state == 2 || state == 3 ){
 			attack.drawObjects(); // display the bombs
 			ship.draw(); // display the ship
+
+			// for diamonds
 			d.creatobj2();
 			d.drawobj2(); 
+
+			// for clouds
 			c2.creatobj();
 			c3.creatobj1();
 			c2.drawobj();
-			c3.drawobj1();
-			
+			c3.drawobj1();			
 		}
 		
 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
