@@ -115,12 +115,13 @@ bool Game::loadLevelTwo()
 {
 		// Loading success flag
 	bool success = true;
+	
 
 	Drawing::assets = loadTexture("assets/shipsprite.png"); // for the ship to move
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
-	Drawing::laser = loadTexture("assets/beams.png"); // for the laser
+	Drawing::laser = loadTexture("assets/beams.png"); // for the laser */
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
@@ -237,10 +238,17 @@ void Game::run()
 					state = 0;
 					loadMenu();
 				}
-				else if (state == 2 && moveLevel){
-					state = 3;
-					loadLevelTwo();
-				}
+			  	else if (state == 3 && moveLevel){
+					gTexture = loadTexture("assets/level2.png");
+					int xMouse,yMouse;
+				 	SDL_GetMouseState(&xMouse, &yMouse);
+					if (xMouse>=588 and xMouse<=605 and yMouse>=499 and yMouse<=586)
+					{
+						loadLevelTwo();
+						state = 2;
+						
+					} 
+				}  
 			}
 
 			// a key is pressed
@@ -265,8 +273,10 @@ void Game::run()
 			else{
 				ship.adjust(); // if the button is not pressed the ship will be straight
 			}
+
 		}
-		
+	
+	
 		SDL_RenderClear(Drawing::gRenderer); // removes everything from renderer
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
 
@@ -282,10 +292,7 @@ void Game::run()
 				break;
 		}
 		
-		attack.drawObjects(); // display the bombs
-		d.creatobj2();
-		d.drawobj2();
-		ship.draw(); // display the ship
+		// display the ship
 
 		// ship's collision with attacks
 		if(attack.DetectCollision(ship.getRect())){
@@ -299,13 +306,17 @@ void Game::run()
 			cout << "found diamond" << endl; count++;
 
 			// move to level two if the player has collected 10 diamonds
-			if(state == 2 && d.diamondsCollected == 10){
-				moveLevel = true; state = 3; loadLevelTwo();
-				cout << "entered level 2 " << endl;
+			if(state == 2 && d.diamondsCollected == 1){
+				moveLevel = true; state = 3;
+
 			}
 		}
 
 		if(state==2){
+			attack.drawObjects(); // display the bombs
+			d.creatobj2();
+			d.drawobj2();
+			ship.draw(); 
 			c2.creatobj();
 			c3.creatobj1();
 			c2.drawobj();
