@@ -219,8 +219,7 @@ void Game::run()
 			{
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse, &yMouse);
-				cout << xMouse << endl;
-				cout << yMouse << endl;
+				
 				// cout<<state;
 				if (state == 0 and xMouse >= 487 and xMouse <= 710 and yMouse >= 456 and yMouse <= 548)
 				{
@@ -238,18 +237,20 @@ void Game::run()
 					state = 0;
 					loadMenu();
 				}
-			  	else if (state == 3 && moveLevel){
+			  	else if (state == 5 && moveLevel){
 					//gTexture = loadTexture("assets/level2.png");
 					int xMouse,yMouse;
+					cout << xMouse << endl;
+					cout << yMouse << endl;
 				 	SDL_GetMouseState(&xMouse, &yMouse);
-					if (xMouse>=588 and xMouse<=605 and yMouse>=499 and yMouse<=586)
+					if (xMouse>=486 and xMouse<=597 and yMouse>=540 and yMouse<=589)
 					{
+						state=3;
 						loadLevelTwo();
-						state = 2;
+						//state = 2;
 						
 					} 
 				}
-			   
 			}
 
 			// a key is pressed
@@ -300,6 +301,17 @@ void Game::run()
 			checkAttack = true;
 			ship.showAttack();
 			cout << "collision detected" << endl;
+			     //whatever is the type of attack, health decrement is 10;
+            Health.CanonAttack();
+			if(Health.health==0){
+				Health.life_check();
+				if(Health.lives==0){
+					Health.alive==false;
+					//end game
+					gTexture = loadTexture("assets/game_over.png");
+					state=4;//end game
+				}
+    }
 		}
 
 		// ship's collision with diamonds
@@ -307,14 +319,15 @@ void Game::run()
 			cout << "found diamond" << endl; count++;
 
 			// move to level two if the player has collected 10 diamonds
-			if(state == 2 && d.diamondsCollected == 10){
-				moveLevel = true; state = 3;
+			if(state == 2 && d.diamondsCollected == 1){
+				moveLevel = true; state = 5; //state5 is just a temp state of level2
 				gTexture = loadTexture("assets/level2.png");
+				
 
 			}
 		}
 
-		if(state==2){
+		if(state==2 || state==3 ){
 			attack.drawObjects(); // display the bombs
 			d.creatobj2();
 			d.drawobj2();

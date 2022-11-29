@@ -48,15 +48,21 @@ int Performance::getHealth(){
 }
 
 void Performance::CanonAttack(){
-    health -= 20;      }
+    cout<< "attack by canon";
+    health -= 20; 
+    cout<< "health left"<<health<<endl;    }
 void Performance::laserAttack(){
-    health -= 10;      }
+    cout<<"attack by laser";
+    health -= 10; 
+    cout<< "health left"<<health<<endl;      }
 void Performance::life_check(){
-    if (lives==2) {
-        health==100;
-        lives--;
+    if (lives==2 && health==0) {
+        health=100;
+        lives=1;
+        cout<< "lives left"<<lives<<endl; 
     }
-    else if(lives==1){
-        lives--;
+    else if(lives==1 && health==0){
+        lives=0;
+        cout<< "lives finish"<<lives<<endl; 
         
     }}

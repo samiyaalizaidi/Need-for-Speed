@@ -1,5 +1,5 @@
 #include<iostream>
-#include "attackManager.hpp"
+//#include "attackManager.hpp"
 using namespace std;
 
 
@@ -14,12 +14,10 @@ Class functions:
         after an attack - either laser or canon.
 */
 
-class Performance:{//public AttackManager{
+class Performance{
     public:
         int health;
         int lives;
-
-        void health_deter();
         int getlife();
         Performance();
         int getHealth(); // getter for health

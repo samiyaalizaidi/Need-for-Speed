@@ -9,8 +9,9 @@
 #include "display.hpp"
 #include "spaceship.hpp"
 #include "startScreen.hpp"
-#include "attackManager.hpp"
+//#include "attackManager.hpp"
 #include "cloudmanager.hpp"
+//#include "performance.hpp"
 #pragma once
 class Game{
     //Screen dimension constants
@@ -54,5 +55,6 @@ public:
     // main work happens here
     void run();
     int x=0;
+    Performance Health;
 };
 

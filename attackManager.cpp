@@ -31,7 +31,6 @@ void AttackManager::createObject(int state){
     // if in level 1, this is the only option. In level 2, it depends on the value of att
     if((att == 0 && state == 3) || state == 2){
         a_type = "canon";
-        Health.CanonAttack();
         // selects a random position to attack from
         int s = rand() % 3;
         switch (s)
@@ -55,17 +54,10 @@ void AttackManager::createObject(int state){
     }
     // will only work if we're in level 2 or state 3
     else if(att == 1 && state == 3){
-        Health.laserAttack();
         a_type = "laser";
         attacks.insert(pair<Attack*, string>(new Laser(), "laser"));  
     }
-    if(Health.health==0){
-        Health.life_check();
-        if(Health.lives==0){
-            state==4;//end game
-            gTexture = loadTexture("assets/game_over.png");
-        }
-    }
+    
 
 }
 
@@ -94,6 +86,7 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
                 //whatever is the type of attack, health decrement is 10;
                 //ship_health.health-=10;
                 Attack* temp = attack.first;
+           
                 attacks.erase(attack.first);
                 temp = nullptr;
                 return true;    
@@ -101,14 +94,14 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
         }
         else if(y == attack.first->getY()){
             if((x + w) >= attack.first->getX() && (x + w) <= (attack.first->getX() + w)){
-                //whatever is the type of attack, health decrement is 10;
-                //ship_health.health-=10;
                 Attack* temp = attack.first;
                 attacks.erase(attack.first);
                 temp = nullptr;
                 return true;
             }
         }
+    
+        
     }
     return false;
 }
