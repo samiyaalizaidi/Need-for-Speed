@@ -121,7 +121,7 @@ bool Game::loadLevelTwo()
 	Drawing::attack = loadTexture("assets/Gameassets/UI bomb.png"); // for the canon
 	Drawing::clouds = loadTexture("assets/clouds.png"); // for the clouds
 	Drawing::diamond = loadTexture("assets/diamond.png"); // for the diamonds
-	Drawing::laser = loadTexture("assets/beams.png"); // for the laser */
+	Drawing::laser = loadTexture("assets/beams.png"); // for the laser 
 
 	gTexture = loadTexture("assets/Background.png"); // for the background image
 	
@@ -220,7 +220,6 @@ void Game::run()
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse, &yMouse);
 				
-				// cout<<state;
 				if (state == 0 and xMouse >= 487 and xMouse <= 710 and yMouse >= 456 and yMouse <= 548)
 				{
 					state = 2; // state2 represents the game has started (play is pressed)
@@ -237,18 +236,12 @@ void Game::run()
 					state = 0;
 					loadMenu();
 				}
-			  	else if (state == 5 && moveLevel){
-					//gTexture = loadTexture("assets/level2.png");
-					int xMouse,yMouse;
-					cout << xMouse << endl;
-					cout << yMouse << endl;
-				 	SDL_GetMouseState(&xMouse, &yMouse);
-					if (xMouse>=486 and xMouse<=597 and yMouse>=540 and yMouse<=589)
+			  	else if (state == 5){
+					cout << xMouse << "," << yMouse << endl;
+					if ((xMouse >= 496 && xMouse <= 700) && (yMouse >= 501 && yMouse <= 583))
 					{
-						state=3;
-						loadLevelTwo();
-						//state = 2;
-						
+						state = 3;
+						loadLevelTwo();						
 					} 
 				}
 			}
@@ -319,19 +312,17 @@ void Game::run()
 			cout << "found diamond" << endl; count++;
 
 			// move to level two if the player has collected 10 diamonds
-			if(state == 2 && d.diamondsCollected == 1){
+			if(state == 2 && d.diamondsCollected == 10){
 				moveLevel = true; state = 5; //state5 is just a temp state of level2
 				gTexture = loadTexture("assets/level2.png");
-				
-
 			}
 		}
 
 		if(state==2 || state==3 ){
 			attack.drawObjects(); // display the bombs
+			ship.draw(); // display the ship
 			d.creatobj2();
-			d.drawobj2();
-			ship.draw(); 
+			d.drawobj2(); 
 			c2.creatobj();
 			c3.creatobj1();
 			c2.drawobj();
