@@ -239,7 +239,7 @@ void Game::run()
 					loadMenu();
 				}
 			  	else if (state == 3 && moveLevel){
-					gTexture = loadTexture("assets/level2.png");
+					//gTexture = loadTexture("assets/level2.png");
 					int xMouse,yMouse;
 				 	SDL_GetMouseState(&xMouse, &yMouse);
 					if (xMouse>=588 and xMouse<=605 and yMouse>=499 and yMouse<=586)
@@ -306,8 +306,9 @@ void Game::run()
 			cout << "found diamond" << endl; count++;
 
 			// move to level two if the player has collected 10 diamonds
-			if(state == 2 && d.diamondsCollected == 1){
+			if(state == 2 && d.diamondsCollected == 10){
 				moveLevel = true; state = 3;
+				gTexture = loadTexture("assets/level2.png");
 
 			}
 		}
