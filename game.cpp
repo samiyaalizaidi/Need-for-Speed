@@ -11,8 +11,20 @@ SDL_Texture *Drawing::clouds = NULL;
 SDL_Texture *Drawing::diamond = NULL;
 SDL_Texture *Drawing::laser = NULL;
 
+Game* Game::Instance = NULL;
 
+Game::Game(){} // no need to write anything in the ctor.
 
+Game::~Game(){
+	delete Instance;
+}
+
+Game* Game::getPointer(){
+	if(Instance == NULL){
+		Instance = new Game();
+	}
+	return Instance;
+}
 
 bool Game::init()
 {

@@ -17,6 +17,9 @@
 #include <SDL_ttf.h>
 #include <string>
 #pragma once
+
+// SINGLETON CLASS
+
 class Game{
     //Screen dimension constants
     const int SCREEN_WIDTH = 1200;
@@ -28,10 +31,21 @@ class Game{
     //Current displayed texture
     SDL_Texture* gTexture = NULL;
     
-    // list to mantain all the attacks.
-    list<Attack*> lst;
-
+    // to keep track of the score on the screen
     Score score;
+
+    // ctor
+    Game();
+
+    // dtor to destroy all dynamically allocated memory
+    ~Game();
+
+    // singleton implementation
+    static Game* Instance;
+
+    // to maintain the health and lives
+    int x=0;
+    Performance Health;
     
 public:
     // for selecting the page that needs to be diplayed
@@ -58,11 +72,13 @@ public:
     // loads all the textures; sets the path
     SDL_Texture* loadTexture( std::string path );
 
+    // returns the dynamically created pointer of this class
+    static Game* getPointer();
+
     // main work happens here
     void run();
-    int x=0;
-    Performance Health;
-
+    
+    // displays the score
     void showScore();
 };
 
