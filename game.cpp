@@ -284,15 +284,17 @@ void Game::run()
 				else if(state==4){
 					cout << xMouse << "," << yMouse << endl;
 					//return to menu screen button conditions
-					if ((xMouse >= 375 && xMouse <= 816) && (yMouse >= 449 && yMouse <= 536)){
+			 		if ((xMouse >= 380 && xMouse <= 755) && (yMouse >= 454 && yMouse <= 608)){
 						d.diamondsCollected=0;
 						Health.health=100;
 						Health.lives=2;
+						cout << "health" <<Health.health<< endl;
+						cout << "lives" <<Health.lives<< endl;
 						//state =  0 is menu screen
 						state=0;
-					    
+					    cout << "game restarted" << endl;
 						loadMenu(); 
-				}  
+				}   
 				}
 			  	else if (state == 5){
 					cout << xMouse << "," << yMouse << endl;
