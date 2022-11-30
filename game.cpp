@@ -273,14 +273,17 @@ void Game::run()
 				{
 					state = 1; // state 1 is the rules page
 					Mix_PlayChannel(-1, button, 0);
+					
 					loadRules();
+				
 				}
-				else if (state == 1 and xMouse >= 42 and xMouse <= 197 and yMouse >= 583 and yMouse <= 641)
+				
+				 else if (state == 1 and xMouse >=1008 and xMouse <= 1160 and yMouse >= 601 and yMouse <= 659)
 				{
 					state = 0;
 					Mix_PlayChannel(-1, button, 0);
 					loadMenu();
-				}
+				} 
 				else if(state==4){
 					cout << xMouse << "," << yMouse << endl;
 					//return to menu screen button conditions
