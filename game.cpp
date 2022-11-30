@@ -186,7 +186,24 @@ SDL_Texture *Game::loadTexture(std::string path)
 		// Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
+
 	return newTexture;
+}
+
+void Game::showScore()
+{
+	TTF_Init();
+	TTF_Font* font = TTF_OpenFont("assets/font/font2.ttf",20);
+	SDL_Color  colour = {0,0,0};
+	string top = to_string(score.getScore());
+	SDL_Surface *surface_message = TTF_RenderText_Solid(font,top.c_str(),colour);
+	SDL_Texture *message = SDL_CreateTextureFromSurface(Drawing::gRenderer,surface_message);
+	SDL_Rect message_rect = {20,50,90,30};
+	SDL_RenderCopy(Drawing::gRenderer,message,NULL,&message_rect);
+	SDL_FreeSurface(surface_message);
+	SDL_DestroyTexture(message);
+	TTF_CloseFont(font);
+	TTF_Quit();
 }
 
 void Game::run()
@@ -214,6 +231,7 @@ void Game::run()
 	bool collisionCheck;
 	int count = 0;
 	int adjust = 0;
+	
 
 	while (!quit)
 	{		
@@ -309,7 +327,7 @@ void Game::run()
 		// ship's collision with attacks
 		if(attack.DetectCollision(ship.getRect())){
 			checkAttack = true;
-			ship.showAttack();
+			ship.showAttack(Health.getlives());
 			adjust++;
 			cout << "collision detected" << endl;
 
@@ -332,6 +350,7 @@ void Game::run()
 		if(d.DetectCollision(ship.getRect())){
 			cout << "found diamond" << endl; count++;
 			Mix_PlayChannel(-1, diamondFound, 0); // play the diamond collected sound
+			score.increase();
 			// move to level two if the player has collected 10 diamonds
 			if(state == 2 && d.diamondsCollected == 10){
 				moveLevel = true; state = 5; //state5 is just a temp state of level2
@@ -340,7 +359,7 @@ void Game::run()
 		}
 		if(adjust > 0){adjust++;}
 
-		if(adjust >= 100){
+		if(adjust >= 75){
 			ship.adjust();
 		}
 

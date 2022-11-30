@@ -22,6 +22,6 @@ class spaceship{
         void adjust();
         int getX(); // returns the x coordinate of the ship
         int getY(); // return the y coordinate of the ship
-        void showAttack(); // displays the attack sprite.
+        void showAttack(int); // displays the attack sprite.
         SDL_Rect getRect();
 };      

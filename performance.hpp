@@ -18,9 +18,8 @@ class Performance{
     public:
         int health;
         int lives;
-        int getlife();
         Performance();
-        int getHealth(); // getter for health
+        int getlives(); // getter for health
         void CanonAttack(); // adjusts for health
         void laserAttack(); 
         bool alive = true ;

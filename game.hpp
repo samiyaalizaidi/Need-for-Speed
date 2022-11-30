@@ -13,6 +13,9 @@
 //#include "attackManager.hpp"
 #include "cloudmanager.hpp"
 //#include "performance.hpp"
+#include  "score.hpp"
+#include <SDL_ttf.h>
+#include <string>
 #pragma once
 class Game{
     //Screen dimension constants
@@ -27,6 +30,8 @@ class Game{
     
     // list to mantain all the attacks.
     list<Attack*> lst;
+
+    Score score;
     
 public:
     // for selecting the page that needs to be diplayed
@@ -57,5 +62,7 @@ public:
     void run();
     int x=0;
     Performance Health;
+
+    void showScore();
 };
 

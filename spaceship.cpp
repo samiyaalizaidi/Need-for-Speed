@@ -43,14 +43,15 @@ void spaceship::changeship(SDL_Rect sr = {12, 18, 71, 70}){ // to change the shi
     srcRect = sr;
 }
 
-void spaceship::showAttack(){    
-    if(health.getHealth() == 0){
+void spaceship::showAttack(int Health){    
+    if(Health == 0){
         srcRect = {418, 319, 63, 63};
         cout << "health completely destroyed" << endl;
     }
     else{
+        cout << "sprite change" << endl;
         srcRect = {24, 319, 57, 62};
-        health.CanonAttack();
+       // health.CanonAttack();
     }
 }
 
