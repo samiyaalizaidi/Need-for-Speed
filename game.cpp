@@ -243,7 +243,9 @@ void Game::run()
 	bool collisionCheck;
 	int count = 0;
 	int adjust = 0;
-	
+	int currTime = 0;
+	int startTime;
+	// int reset = 1;
 
 	while (!quit)
 	{		
@@ -305,6 +307,7 @@ void Game::run()
 					{
 						state = 3;
 						Mix_PlayChannel(-1, button, 0);
+						startTime = SDL_GetTicks();
 						loadLevelTwo();						
 					} 
 				}
@@ -410,6 +413,13 @@ void Game::run()
 			c3.drawobj1();			
 		}
 		
+		if(state == 3){
+			if(SDL_GetTicks() - startTime >= 90000){
+				// timer for 90 seconds
+				// make the changes here				
+				cout << "game over" << endl;
+			}
+		}
 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 
 		SDL_Delay(50); // causes sdl engine to delay for specified miliseconds		
