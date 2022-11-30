@@ -16,7 +16,7 @@ void spaceship::moveup(){
     coord.x++; // x coordinate will also be increased as the ship keeps on moving.
     if(!(moverRect.y <= 0)){
         moverRect.y -= 10;
-        if ((srcRect.x == 12 && srcRect.y == 18) || (srcRect.x == 12 && srcRect.y == 114))
+        if ((srcRect.x == 12 && srcRect.y == 18) || (srcRect.x == 12 && srcRect.y == 114) || (srcRect.x == 24 && srcRect.y == 319))
         {
             srcRect = {108, 123, 71, 70};
 
@@ -28,7 +28,7 @@ void spaceship::move_down(){
     coord.x++; // x coordinate will also be increased as the ship keeps on moving.
     if(!(moverRect.y >= 625)){
         moverRect.y += 5;
-        if ((srcRect.x == 12 && srcRect.y == 18) || (srcRect.x == 108 && srcRect.y == 123))
+        if ((srcRect.x == 12 && srcRect.y == 18) || (srcRect.x == 108 && srcRect.y == 123) || (srcRect.x == 24 && srcRect.y == 319))
         {
             srcRect = {12, 114, 69, 82};
         }
@@ -51,7 +51,6 @@ void spaceship::showAttack(int Health){
     else{
         cout << "sprite change" << endl;
         srcRect = {24, 319, 57, 62};
-       // health.CanonAttack();
     }
 }
 

@@ -29,5 +29,8 @@ class Attack{
 
         // returns the y coordinate of the attack 
         int getY(); 
+
+        // returns the sdl rect of the attack
+        SDL_Rect getRect();
         
 };

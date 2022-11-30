@@ -375,7 +375,8 @@ void Game::run()
 			cout << "found diamond" << endl; count++;
 			cout << "total diamonds = " << d.diamondsCollected<<endl; 
 			Mix_PlayChannel(-1, diamondFound, 0); // play the diamond collected sound
-			score.increase();
+			score++;
+			cout << "current score: " << score.getScore() << endl;
 			// move to level two if the player has collected 10 diamonds
 			if(state == 2 && d.diamondsCollected == 10){
 				moveLevel = true; state = 5; //state5 is just a temp state of level2
