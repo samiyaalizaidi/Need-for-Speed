@@ -11,14 +11,11 @@ int Performance::getlives(){
     return lives;
 }
 
-void Performance::CanonAttack(){
-    cout<< "attack by canon";
+void Performance::BothAttack(){
+    cout<< "attack on spaceship"<<endl;
     health -= 20; 
     cout<< "health left"<<health<<endl;    }
-/* void Performance::laserAttack(){
-    cout<<"attack by laser";
-    health -= 10; 
-    cout<< "health left"<<health<<endl;      } */
+
 void Performance::life_check(){
     if (lives==2 && health==0) {
         health=100;

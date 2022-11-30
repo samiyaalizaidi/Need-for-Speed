@@ -236,9 +236,9 @@ void Game::run()
 	AttackManager attack; // to display the canon for testing
 	string direction = "reset"; // to call the mover functions
 	bool checkAttack = false;
-	cloudmanager c2;
-	cloudmanager c3;
-	cloudmanager d;
+	cloudmanager c2;  //cloud created at one level
+	cloudmanager c3;  //cloud created at another level
+	cloudmanager d;   //diamond created
 	bool moveLevel;
 	bool collisionCheck;
 	int count = 0;
@@ -301,14 +301,14 @@ void Game::run()
 						loadMenu(); 
 				}    
 				}
-			  	else if (state == 5){
+			  	else if (state == 5){ //showing level2 screen
 					cout << xMouse << "," << yMouse << endl;
-					if ((xMouse >= 496 && xMouse <= 700) && (yMouse >= 501 && yMouse <= 583))
+					if ((xMouse >= 496 && xMouse <= 700) && (yMouse >= 501 && yMouse <= 583)) //level 2 play button check
 					{
-						state = 3;
-						Mix_PlayChannel(-1, button, 0);
-						startTime = SDL_GetTicks();
-						loadLevelTwo();						
+						state = 3; //level 2 permenant state
+						Mix_PlayChannel(-1, button, 0); //plays music
+						startTime = SDL_GetTicks(); //timer
+						loadLevelTwo();			    	
 					} 
 				}
 
@@ -366,7 +366,7 @@ void Game::run()
 			Mix_PlayChannel(-1, attackSound, 0); // play the attack sound
 
 			//whatever is the type of attack, health decrement is 10;
-            Health.CanonAttack();
+            Health.BothAttack();
 			if(Health.health==0){
 				Health.life_check();
 				if(Health.lives==0){
@@ -385,9 +385,11 @@ void Game::run()
 			Mix_PlayChannel(-1, diamondFound, 0); // play the diamond collected sound
 			score++;
 			cout << "current score: " << score.getScore() << endl;
+			//showScore();
+			
 			// move to level two if the player has collected 10 diamonds
 			if(state == 2 && d.diamondsCollected == 10){
-				moveLevel = true; state = 5; //state5 is just a temp state of level2
+				moveLevel = true; state = 5; //state 5 is just a temperory state for level2
 				gTexture = loadTexture("assets/level2.png");
 			}
 		}
@@ -418,7 +420,7 @@ void Game::run()
 				// timer for 90 seconds
 				// make the changes here				
 				cout << "game over" << endl;
-			}
+			} 
 		}
 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
 

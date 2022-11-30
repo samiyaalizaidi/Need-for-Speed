@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "drawing.hpp"
-#include "display.hpp"
+//#include "display.hpp"
 #include "spaceship.hpp"
 
 //#include "attackManager.hpp"

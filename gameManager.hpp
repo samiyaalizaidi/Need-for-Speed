@@ -1,4 +1,4 @@
-#pragma once
+/* #pragma once
 
 #include <SDL.h>
 //#include "time.hpp"
@@ -36,4 +36,4 @@ class gameManager{
         void Update();
         void LateUpdate();
         void Render();
-};
+}; */

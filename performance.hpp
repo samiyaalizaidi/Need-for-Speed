@@ -19,10 +19,11 @@ class Performance{
         int health;
         int lives;
         Performance();
-        int getlives(); // getter for health
-        void CanonAttack(); // adjusts for health
-        void laserAttack(); 
+        // getter for health
+        int getlives(); 
+        //it decreases the health by 20, when ship is attacked
+        void BothAttack(); 
         bool alive = true ;
-        void health_deter();
+        //keeps check on lives left
         void life_check();
 };
