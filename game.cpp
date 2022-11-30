@@ -371,8 +371,9 @@ void Game::run()
 		}
 		if(adjust > 0){adjust++;}
 
-		if(adjust >= 75){
+		if(adjust >= 10){
 			ship.adjust();
+			adjust = 0;
 		}
 
 		if(state == 2 || state == 3 ){
