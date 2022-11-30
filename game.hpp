@@ -9,7 +9,7 @@
 #include "drawing.hpp"
 #include "display.hpp"
 #include "spaceship.hpp"
-#include "startScreen.hpp"
+
 //#include "attackManager.hpp"
 #include "cloudmanager.hpp"
 //#include "performance.hpp"

@@ -262,7 +262,6 @@ void Game::run()
 			{
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse, &yMouse);
-				
 				if (state == 0 and xMouse >= 487 and xMouse <= 710 and yMouse >= 456 and yMouse <= 548)
 				{
 					state = 2; // state2 represents the game has started (play is pressed)
@@ -281,6 +280,19 @@ void Game::run()
 					state = 0;
 					Mix_PlayChannel(-1, button, 0);
 					loadMenu();
+				}
+				else if(state==4){
+					cout << xMouse << "," << yMouse << endl;
+					//return to menu screen button conditions
+					if ((xMouse >= 375 && xMouse <= 816) && (yMouse >= 449 && yMouse <= 536)){
+						d.diamondsCollected=0;
+						Health.health=100;
+						Health.lives=2;
+						//state =  0 is menu screen
+						state=0;
+					    
+						loadMenu(); 
+				}  
 				}
 			  	else if (state == 5){
 					cout << xMouse << "," << yMouse << endl;
@@ -361,6 +373,7 @@ void Game::run()
 		// ship's collision with diamonds
 		if(d.DetectCollision(ship.getRect())){
 			cout << "found diamond" << endl; count++;
+			cout << "total diamonds = " << d.diamondsCollected<<endl; 
 			Mix_PlayChannel(-1, diamondFound, 0); // play the diamond collected sound
 			score.increase();
 			// move to level two if the player has collected 10 diamonds
