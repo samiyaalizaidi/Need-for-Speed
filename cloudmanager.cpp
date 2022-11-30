@@ -101,10 +101,26 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
     int x = coord.x;
     int y = coord.y;
     int i = 0;
+    int s = 100; // diamond's size. can be used for both w and h.
+
+    /*  COLLISION DETECTION LOGIC EXPLANATION
+
+        x1,y1___________x2,y1
+            |           |  
+            |           |
+        x1,y2___________x2,y2  
+
+        diamond has -> x, y, w, h
+        if x1 = x OR x1 = x + w OR x2 = x OR x2 = x + w 
+            -> y is in range [y1, y2] OR (y + h) is in range [y1, y2]     
+        if y1 = y OR y1 = y + h OR y2 = y OR y2 = y + h
+            -> x is in range [x1, x2] OR (x + w) is in range [x1, x2]
+    */
+
 
     for(auto diamond : dim){
-        if((x + w) == diamond->getX()){
-            if(diamond->getY() >= y && diamond->getY() <= (y + h)){
+        if(((x + w) == diamond->getX()) || (x == diamond->getX())){
+            if((diamond->getY() >= y && diamond->getY() <= (y + h)) || ((diamond->getY() + s) >= y && (diamond->getY() + s) < (y + h))){
                 delete diamond;
                 diamond = NULL;
                 dim.erase(dim.begin() + i);
@@ -113,28 +129,9 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
                 return true;
             }
         }
-        else if(x == diamond->getX()){
-            if(diamond->getY() >= y && diamond->getY() <= (y + h)){
-                delete diamond;
-                diamond = NULL;
-                dim.erase(dim.begin() + i);
-                cout << "diamond deleted" << endl;
-                diamondsCollected++;
-                return true;
-            }
-        }
-        else if((x + w) == diamond->getX()){
-            if(diamond->getY() <= y && y <= (diamond->getY() + 50)){
-                delete diamond;
-                diamond = NULL;
-                dim.erase(dim.begin() + i);
-                cout << "diamond deleted" << endl;
-                diamondsCollected++;
-                return true;
-            }
-        }
-        else if(diamond->getY() == y){
-            if((x + w) >= diamond->getX() && (x + w) <= diamond->getY()){
+        
+        else if((diamond->getY() == y) || ((y + h) == diamond->getY())){
+            if((diamond->getX() >= x && diamond->getX() <= (x + w)) || ((diamond->getX() + s) >= x && (diamond->getX() + s) <= (x + w))){
                 delete diamond;
                 diamond = NULL;
                 dim.erase(dim.begin() + i);

@@ -35,3 +35,7 @@ int Attack::getX(){
 int Attack::getY(){
     return moverRect.y;
 }
+
+SDL_Rect Attack::getRect(){
+    return moverRect;
+}
