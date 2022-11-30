@@ -5,12 +5,11 @@ Score::Score()
    score = 0; 
 }
 
-void Score::increase()
-{
-    score++;
-}
-
 int Score::getScore()
 {
     return score;
+}
+
+void Score:: operator++(int i){
+    score++;
 }

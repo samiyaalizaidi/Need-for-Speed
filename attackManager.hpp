@@ -17,12 +17,16 @@ class AttackManager{
 
         // obtains a dynamic memory
         void createObject(int);
+
         // returns true if the attack has collided with the ship
         bool DetectCollision(SDL_Rect);
+
         // destructor to release dynamic memory
         ~AttackManager();
+
         //Performance ship_health;
         string a_type;
+        
         //friend class Performance;
         Performance Health;
 };
