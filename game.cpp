@@ -268,16 +268,13 @@ void Game::run()
 				{
 					state = 2; // state2 represents the game has started (play is pressed)
 					Mix_PlayChannel(-1, button, 0);
-					loadMedia();
-					
+					loadMedia();					
 				}
 				else if (state == 0 and xMouse >= 485 and xMouse <= 713 and yMouse >= 573 and yMouse <= 654)
 				{
 					state = 1; // state 1 is the rules page
-					Mix_PlayChannel(-1, button, 0);
-					
-					loadRules();
-				
+					Mix_PlayChannel(-1, button, 0);					
+					loadRules();				
 				}
 				
 				 else if (state == 1 and xMouse >=1008 and xMouse <= 1160 and yMouse >= 601 and yMouse <= 659)
@@ -310,6 +307,15 @@ void Game::run()
 						startTime = SDL_GetTicks(); //timer
 						loadLevelTwo();			    	
 					} 
+				}
+				
+				else if(state == 6){ // game won screen
+					cout << xMouse << "," << yMouse << endl;
+					if((xMouse >= 384 && xMouse <= 751) && (yMouse >= 454 && yMouse <= 609)){
+						Mix_PlayChannel(-1, button, 0);
+						state = 0; // go to menu screen
+						loadMenu();					
+					}
 				}
 
 			}
@@ -385,7 +391,6 @@ void Game::run()
 			Mix_PlayChannel(-1, diamondFound, 0); // play the diamond collected sound
 			score++;
 			cout << "current score: " << score.getScore() << endl;
-			//showScore();
 			
 			// move to level two if the player has collected 10 diamonds
 			if(state == 2 && d.diamondsCollected == 10){
@@ -416,9 +421,9 @@ void Game::run()
 		}
 		
 		if(state == 3){
-			if(SDL_GetTicks() - startTime >= 90000){
-				// timer for 90 seconds
-				// make the changes here				
+			if((SDL_GetTicks() - startTime >= 90000) || (d.diamondsCollected == 20)){
+				gTexture = loadTexture("assets/game_won.png");
+				state = 6; // temp state for winning screen				
 				cout << "game over" << endl;
 			} 
 		}
