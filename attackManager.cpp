@@ -86,7 +86,7 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
             if((attack.first->getY() >= y && attack.first->getY() <= (y + h))){
                 Attack* temp = attack.first;           
                 attacks.erase(attack.first);
-                temp = nullptr;
+                temp = NULL;
                 return true;    
             }
         }
@@ -94,7 +94,7 @@ bool AttackManager::DetectCollision(SDL_Rect coord){
             if((x + w) >= attack.first->getX() && (x + w) <= (attack.first->getX() + w)){
                 Attack* temp = attack.first;
                 attacks.erase(attack.first);
-                temp = nullptr;
+                temp = NULL;
                 return true;
             }
         }

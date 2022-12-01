@@ -100,8 +100,8 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
     int w = coord.w;
     int x = coord.x;
     int y = coord.y;
-    int i = 0;
-    int s = 100; // diamond's size. can be used for both w and h.
+    int i = 0; // to keep track of the index.
+    int s = 50; // diamond's size. can be used for both w and h.
 
     /*  COLLISION DETECTION LOGIC EXPLANATION
 
@@ -129,8 +129,27 @@ bool cloudmanager::DetectCollision(SDL_Rect coord){
                 return true;
             }
         }
-        
+        else if(((x + w) == diamond->getX() + s) || (x == diamond->getX() + s)){
+            if((diamond->getY() >= y && diamond->getY() <= (y + h)) || ((diamond->getY() + s) >= y && (diamond->getY() + s) < (y + h))){
+                delete diamond;
+                diamond = NULL;
+                dim.erase(dim.begin() + i);
+                cout << "diamond deleted" << endl;
+                diamondsCollected++;
+                return true;
+            }
+        }
         else if((diamond->getY() == y) || ((y + h) == diamond->getY())){
+            if((diamond->getX() >= x && diamond->getX() <= (x + w)) || ((diamond->getX() + s) >= x && (diamond->getX() + s) <= (x + w))){
+                delete diamond;
+                diamond = NULL;
+                dim.erase(dim.begin() + i);
+                cout << "diamond deleted" << endl;
+                diamondsCollected++;
+                return true;
+            }
+        }
+        else if((diamond->getY() + s == y) || ((y + h) == diamond->getY() + s)){
             if((diamond->getX() >= x && diamond->getX() <= (x + w)) || ((diamond->getX() + s) >= x && (diamond->getX() + s) <= (x + w))){
                 delete diamond;
                 diamond = NULL;
