@@ -1,5 +1,9 @@
 #include<iostream>
 using namespace std;
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <string>
+#include "drawing.hpp"
 #pragma once
 class Performance{
     public:
@@ -13,4 +17,8 @@ class Performance{
         bool alive = true ;
         //keeps check on lives left
         void life_check();
+        // displays life
+        void displayLife();
+        // displays health
+        void displayHealth();
 };

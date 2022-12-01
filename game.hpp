@@ -9,8 +9,7 @@
 #include "diamond_manager.hpp"
 #include "attackManager.hpp"
 #include "score.hpp"
-#include <SDL_ttf.h>
-#include <string>
+
 #pragma once
 
 // SINGLETON CLASS

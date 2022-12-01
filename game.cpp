@@ -30,7 +30,7 @@ bool Game::init()
 {
 	// Initialization flag
 	bool success = true;
-
+	TTF_Init();
 	// Initialize SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
@@ -202,23 +202,6 @@ SDL_Texture *Game::loadTexture(std::string path)
 	return newTexture;
 }
 
-void Game::showScore()
-{
-	TTF_Init();
-	TTF_Font* font = TTF_OpenFont("assets/font/font2.ttf",20);
-	SDL_Color  colour = {0,0,0};
-	string top = to_string(score.getScore());
-	SDL_Surface *surface_message = TTF_RenderText_Solid(font,top.c_str(),colour);
-	SDL_Texture *message = SDL_CreateTextureFromSurface(Drawing::gRenderer,surface_message);
-	SDL_Rect message_rect = {20,50,90,30};
-	SDL_RenderCopy(Drawing::gRenderer,message,NULL,&message_rect);
-	SDL_FreeSurface(surface_message);
-	SDL_DestroyTexture(message);
-	TTF_CloseFont(font);
-	TTF_Quit();
-	cout<<"goes into show score"<<endl;
-}
-
 void Game::run()
 {
 	// for the music
@@ -234,8 +217,7 @@ void Game::run()
 	SDL_Event e;
 
 	spaceship ship; // we will have our spaceship here	
-	AttackManager* attack = AttackManager::getPointer(); // to display the canon for testing
-	string direction = "reset"; // to call the mover functions
+	AttackManager* attack = AttackManager::getPointer(); // to display the attacks
 	bool checkAttack = false;
 	cloudmanager c2;  //cloud created at one level
 	cloudmanager c3;  //cloud created at another level
@@ -245,8 +227,7 @@ void Game::run()
 	int count = 0;
 	int adjust = 0;
 	int currTime = 0;
-	int startTime;
-	// int reset = 1;
+	int startTime;	
 
 	while (!quit)
 	{		
@@ -327,12 +308,10 @@ void Game::run()
 				switch( e.key.keysym.sym ){
 
                     case SDLK_UP:
-                        direction = "up";
 						ship.moveup();
                         break;
 
                     case SDLK_DOWN:
-                        direction = "down";
 						ship.move_down();
                         break;
 
@@ -352,6 +331,7 @@ void Game::run()
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
 
 		// to create attacks with 5% probability
+		// showScore();
 		int y = rand() % 20;
 		switch (y)
 		{
@@ -392,7 +372,7 @@ void Game::run()
 			Mix_PlayChannel(-1, diamondFound, 0); // play the diamond collected sound
 			score++;
 			cout << "current score: " << score.getScore() << endl;
-			showScore();
+
 			
 			// move to level two if the player has collected 10 diamonds
 			if(state == 2 && d.diamondsCollected == 10){
@@ -419,7 +399,16 @@ void Game::run()
 			c2.creatobj();
 			c3.creatobj1();
 			c2.drawobj();
-			c3.drawobj1();			
+			c3.drawobj1();	
+
+			// to display the score
+			score.showScore();	
+
+			// to display the lives left
+			Health.displayLife();
+
+			// to display the health
+			Health.displayHealth();	
 		}
 		
 		if(state == 3){

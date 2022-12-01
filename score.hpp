@@ -1,4 +1,10 @@
 #pragma once
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <string>
+#include "drawing.hpp"
+#include <iostream>
+using namespace std;
 class Score
 {
     public:
@@ -10,6 +16,9 @@ class Score
 
         // initializes the score
         Score();
+
+        // displays the score
+        void showScore();
 
     private:
         int score;
