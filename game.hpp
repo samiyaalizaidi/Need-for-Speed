@@ -1,19 +1,13 @@
 // code from homework 4
 #include <SDL_image.h>
 #include <stdio.h>
-#include <iostream>
 #include <SDL_mixer.h>
-#include <string>
 #include <stdlib.h>
 #include <time.h>
-#include "drawing.hpp"
-//#include "display.hpp"
 #include "spaceship.hpp"
-
-//#include "attackManager.hpp"
 #include "cloudmanager.hpp"
-//#include "performance.hpp"
-#include  "score.hpp"
+#include "attackManager.hpp"
+#include "score.hpp"
 #include <SDL_ttf.h>
 #include <string>
 #pragma once

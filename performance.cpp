@@ -27,4 +27,4 @@ void Performance::life_check(){
         cout<< "lives finish"<<lives<<endl; 
       
     }  
-    }
+}

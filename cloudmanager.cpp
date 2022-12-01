@@ -1,7 +1,5 @@
-
 #include "cloudmanager.hpp"
-#include <iostream>
-using namespace std;
+
 void cloudmanager::creatobj(){
     check++;
     if (check >50){
@@ -33,9 +31,6 @@ void cloudmanager::drawobj1(){
     while(size<cld1.size()){
         cld1[size]->draw();
         cld1[size]->move();
-        //if (cld1[size]->count1 == 3) {
-        //		cld.erase(cld.begin()+size);
-        //}
         size++;
         }
    
@@ -92,7 +87,7 @@ cloudmanager::~cloudmanager(){
         cld[size] = NULL;
         size++;
     }
-    cout << "clouds deleted" << endl; // memory ka issue hai
+    cout << "clouds deleted" << endl; 
 }
 
 bool cloudmanager::DetectCollision(SDL_Rect coord){

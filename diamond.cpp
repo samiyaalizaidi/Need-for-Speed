@@ -1,5 +1,5 @@
 #include "diamond.hpp"
-#include <iostream>
+
 
 
 diamond::diamond(int x, int y){

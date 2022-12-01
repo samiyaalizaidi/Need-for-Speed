@@ -1,5 +1,3 @@
-#include <list>
-#include <SDL.h>
 #include <vector>
 #include "canon.hpp"
 #include "laser.hpp"

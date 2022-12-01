@@ -1,5 +1,3 @@
-// #include <QGraphicsTextItem>
-
 class Score
 {
     public:
@@ -11,7 +9,6 @@ class Score
 
         // initializes the score
         Score();
-        //~Score();
 
     private:
         int score;
