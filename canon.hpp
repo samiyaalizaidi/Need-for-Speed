@@ -1,5 +1,5 @@
 #include "attack.hpp"
-
+#pragma once
 class Canon : public Attack{
     public:
         // constructor

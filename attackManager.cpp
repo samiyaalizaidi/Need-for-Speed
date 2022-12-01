@@ -1,5 +1,16 @@
 #include "attackManager.hpp"
 
+AttackManager::AttackManager(){} // no need to write anything here
+
+AttackManager* AttackManager::objPointer = NULL;
+
+AttackManager* AttackManager::getPointer(){
+    if(objPointer == NULL){
+        objPointer = new AttackManager();
+    }
+    return objPointer;
+}
+
 void AttackManager::drawObjects(){
     // draw all the attacks
     for(auto attack : attacks){
@@ -71,6 +82,7 @@ AttackManager::~AttackManager(){
     }
     attacks.clear(); // clear the map
     cout << "everything deleted" << endl;
+    delete objPointer;
 }
 
 bool AttackManager::DetectCollision(SDL_Rect coord){

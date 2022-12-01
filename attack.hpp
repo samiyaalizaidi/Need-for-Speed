@@ -15,11 +15,7 @@ class Attack{
         // for canon's movement
         void move_NorthEast();
         void move_NorthWest();
-
-        // might remove these
-        void move_SouthEast();
-        void move_SouthWest();
-
+        
         // for laser's movement
         void move_up();
         void move_right();

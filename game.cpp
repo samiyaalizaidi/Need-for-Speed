@@ -233,7 +233,7 @@ void Game::run()
 	SDL_Event e;
 
 	spaceship ship; // we will have our spaceship here	
-	AttackManager attack; // to display the canon for testing
+	AttackManager* attack = AttackManager::getPointer(); // to display the canon for testing
 	string direction = "reset"; // to call the mover functions
 	bool checkAttack = false;
 	cloudmanager c2;  //cloud created at one level
@@ -355,7 +355,7 @@ void Game::run()
 		switch (y)
 		{
 			case 1:
-				attack.createObject(state); 
+				attack->createObject(state); 
 				break;
 			
 			default:
@@ -363,7 +363,7 @@ void Game::run()
 		}
 		
 		// ship's collision with attacks
-		if(attack.DetectCollision(ship.getRect())){
+		if(attack->DetectCollision(ship.getRect())){
 			checkAttack = true;
 			ship.showAttack(Health.getlives());
 			adjust++;
@@ -406,7 +406,7 @@ void Game::run()
 		}
 
 		if(state == 2 || state == 3 ){
-			attack.drawObjects(); // display the bombs
+			attack->drawObjects(); // display the bombs
 			ship.draw(); // display the ship
 
 			// for diamonds
