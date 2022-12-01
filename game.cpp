@@ -238,7 +238,7 @@ void Game::run()
 	bool checkAttack = false;
 	cloudmanager c2;  //cloud created at one level
 	cloudmanager c3;  //cloud created at another level
-	cloudmanager d;   //diamond created
+	diamond_manager d;   //diamond created
 	bool moveLevel;
 	bool collisionCheck;
 	int count = 0;

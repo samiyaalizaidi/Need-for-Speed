@@ -6,6 +6,7 @@
 #include <time.h>
 #include "spaceship.hpp"
 #include "cloudmanager.hpp"
+#include "diamond_manager.hpp"
 #include "attackManager.hpp"
 #include "score.hpp"
 #include <SDL_ttf.h>
