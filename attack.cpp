@@ -10,16 +10,6 @@ void Attack::move_NorthWest(){
     moverRect.y -= 10;
 }
 
-void Attack::move_SouthEast(){
-    moverRect.x += 10;
-    moverRect.y += 10;
-}
-
-void Attack::move_SouthWest(){
-    moverRect.x -= 10;
-    moverRect.y += 10;
-}
-
 void Attack::move_up(){
     moverRect.y -= 10;
 }
