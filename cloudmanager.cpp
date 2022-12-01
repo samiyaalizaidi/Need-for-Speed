@@ -1,4 +1,5 @@
 #include "cloudmanager.hpp"
+#include <iostream>
 
 void cloudmanager::creatobj(){
     check++;

@@ -1,5 +1,6 @@
 #include "attackManager.hpp"
 
+
 AttackManager::AttackManager(){} // no need to write anything here
 
 AttackManager* AttackManager::objPointer = NULL;
