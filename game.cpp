@@ -216,6 +216,7 @@ void Game::showScore()
 	SDL_DestroyTexture(message);
 	TTF_CloseFont(font);
 	TTF_Quit();
+	cout<<"goes into show score"<<endl;
 }
 
 void Game::run()
@@ -391,6 +392,7 @@ void Game::run()
 			Mix_PlayChannel(-1, diamondFound, 0); // play the diamond collected sound
 			score++;
 			cout << "current score: " << score.getScore() << endl;
+			showScore();
 			
 			// move to level two if the player has collected 10 diamonds
 			if(state == 2 && d.diamondsCollected == 10){
