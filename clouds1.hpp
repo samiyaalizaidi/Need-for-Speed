@@ -1,5 +1,5 @@
 #include <SDL.h>
-//#include  "unit.hpp"
+#pragma once
 #include "drawing.hpp"
 #include<vector>
 #include<list>

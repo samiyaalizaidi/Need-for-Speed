@@ -1,6 +1,6 @@
 #include "clouds.hpp"
 #include <iostream>
-//#include "game.hpp"
+#pragma once
 
 clouds::clouds(int x, int y){
     // src coorinates from assets.png file, they have been found using spritecow.com

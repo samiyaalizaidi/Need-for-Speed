@@ -4,6 +4,7 @@
 #include "performance.hpp"
 using namespace std;
 #include <map>
+#pragma once
 
 // SINGLETON CLASS
 

@@ -1,4 +1,5 @@
 using namespace std;
+#pragma once
 #include "clouds.hpp"
 #include "clouds1.hpp"
 #include "diamond.hpp"
