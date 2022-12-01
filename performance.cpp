@@ -12,7 +12,7 @@ int Performance::getlives(){
 }
 void Performance::displayLife(){
     TTF_Init();
-	TTF_Font* font = TTF_OpenFont("font2.ttf",20);
+	TTF_Font* font = TTF_OpenFont("Futura Bold font.ttf",20);
     SDL_Color  colour = { 255, 255, 255, 0};
 	string top = "Lives Left: " +to_string(getlives());
 	SDL_Surface *surface_message = TTF_RenderText_Solid(font,top.c_str(),colour);
@@ -27,7 +27,7 @@ void Performance::displayLife(){
 
 void Performance::displayHealth(){
     TTF_Init();
-	TTF_Font* font = TTF_OpenFont("font2.ttf",20);
+	TTF_Font* font = TTF_OpenFont("Futura Bold font.ttf",20);
     SDL_Color  colour = { 255, 255, 255, 0};
 	string top = "Health: " + to_string(health);
 	SDL_Surface *surface_message = TTF_RenderText_Solid(font,top.c_str(),colour);

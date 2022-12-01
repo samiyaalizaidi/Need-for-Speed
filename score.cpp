@@ -16,7 +16,7 @@ void Score:: operator++(int i){
 
 void Score::showScore(){
     TTF_Init();
-	TTF_Font* font = TTF_OpenFont("font2.ttf",20);
+	TTF_Font* font = TTF_OpenFont("Futura Bold font.ttf",20);
     SDL_Color  colour = { 255, 255, 255, 0};
 	string top = "Score: " +to_string(getScore());
 	SDL_Surface *surface_message = TTF_RenderText_Solid(font,top.c_str(),colour);
