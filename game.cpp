@@ -270,6 +270,7 @@ void Game::run()
 					//return to menu screen button conditions
 			 	 	if ((xMouse >= 378 && xMouse <= 760) && (yMouse >= 454 && yMouse <= 615)){
 						d.diamondsCollected=0;
+						score.score_reset();
 						Health.health=100;
 						Health.lives=2;
 						cout << "health" <<Health.health<< endl;
@@ -295,8 +296,16 @@ void Game::run()
 					cout << xMouse << "," << yMouse << endl;
 					if((xMouse >= 384 && xMouse <= 751) && (yMouse >= 454 && yMouse <= 609)){
 						Mix_PlayChannel(-1, button, 0);
-						state = 0; // go to menu screen
-						loadMenu();					
+						d.diamondsCollected=0;
+						score.score_reset();
+						Health.health=100;
+						Health.lives=2;
+						cout << "health" <<Health.health<< endl;
+						cout << "lives" <<Health.lives<< endl;
+						//state =  0 is menu screen
+						state=0;
+					    cout << "game restarted" << endl;
+						loadMenu(); 				
 					}
 				}
 
@@ -416,6 +425,7 @@ void Game::run()
 				gTexture = loadTexture("assets/game_won.png");
 				state = 6; // temp state for winning screen				
 				cout << "game over" << endl;
+				
 			} 
 		}
 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer

@@ -19,6 +19,7 @@ class Score
 
         // displays the score
         void showScore();
+        void score_reset();
 
     private:
         int score;
