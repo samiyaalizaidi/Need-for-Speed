@@ -296,14 +296,15 @@ void Game::run()
 					cout << xMouse << "," << yMouse << endl;
 					if((xMouse >= 384 && xMouse <= 751) && (yMouse >= 454 && yMouse <= 609)){
 						Mix_PlayChannel(-1, button, 0);
-						d.diamondsCollected=0;
+						d.diamondsCollected = 0;
 						score.score_reset();
-						Health.health=100;
-						Health.lives=2;
+						Health.health = 100;
+						Health.lives = 2;
+						 
 						cout << "health" <<Health.health<< endl;
 						cout << "lives" <<Health.lives<< endl;
-						//state =  0 is menu screen
-						state=0;
+						
+						state = 0;
 					    cout << "game restarted" << endl;
 						loadMenu(); 				
 					}

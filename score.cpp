@@ -13,6 +13,7 @@ int Score::getScore()
 void Score:: operator++(int i){
     score++;
 }
+
 void Score::score_reset(){
 	score=0;
 }

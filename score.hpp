@@ -19,6 +19,8 @@ class Score
 
         // displays the score
         void showScore();
+
+        // resets the score
         void score_reset();
 
     private:
